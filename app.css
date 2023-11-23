@@ -72,7 +72,7 @@ button {
   border: 1px solid var(--stroke-s-100);
 }
 
-.search:is(:active, :focus) {
+.search:is(:active, :focus-visible) {
   border: 2px solid var(--bg-white);
 }
 
@@ -91,7 +91,7 @@ button {
   background: var(--grey-g-50);
 }
 
-.notification:focus ~ :is(.notification-bell, .notification-content) {
+.notification:focus-visible ~ :is(.notification-bell, .notification-content) {
   background: var(--grey-g-50);
   box-shadow: 0 0 0 3px var(--states-focused), 0 0 0 1px #000;
 }
@@ -180,7 +180,7 @@ button {
   box-shadow: 0 0 0 1.5px #333, 0 3px 0 0 #000 inset;
 }
 
-.button-1:focus {
+.button-1:focus-visible {
   background: #404040;
   box-shadow: 0 0 0 5px var(--states-focused), 0 0 0 3px #fff, 0 0 0 1.5px #333;
 }
@@ -209,7 +209,7 @@ button {
   box-shadow: 0 2px 1.5px 0 #e2e2e2 inset;
 }
 
-.button-2:focus {
+.button-2:focus-visible {
   background: var(--bg-white);
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 0 3px var(--states-focused), 0 0 0 1px #fff, 0 -1px 0 0 #b5b5b5 inset;
@@ -234,7 +234,7 @@ button {
   background: #e0e0e0;
 }
 
-.button-3:focus {
+.button-3:focus-visible {
   background: #fff;
   border: 2px solid var(--states-focused);
 }
