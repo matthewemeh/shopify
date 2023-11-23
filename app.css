@@ -1,0 +1,240 @@
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  outline: none;
+  cursor: default;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+button {
+  all: unset;
+}
+
+:root {
+  --grey-g-50: #656266;
+  --grey-g-100: #b5b5b5;
+  --grey-g-200: #303030;
+  --grey-g-300: #1a1a1a;
+
+  --font-light: #e3e3e3;
+  --font-mid-2: #616161;
+  --font-dark: #303030;
+
+  --stroke-s-50: #dbdbdb;
+  --stroke-s-100: #e1e1e1;
+  --stroke-s-200: #616161;
+  --stroke-light-100: rgba(255, 255, 255, 0.2);
+
+  --state-hover: #f1f1f1;
+  --state-pressed: #f0f0f0;
+  --states-focused: #005bd3;
+
+  --bg-white: #ffffff;
+  --bg-seashell: #f1f1f1;
+
+  --default-transition: all 400ms ease-in-out;
+}
+
+/* search */
+.search {
+  gap: 6px;
+  width: 100%;
+  padding: 8px;
+  height: 32px;
+  display: flex;
+  flex-shrink: 0;
+  max-width: 480px;
+  padding-left: 34px;
+  align-items: center;
+  position: relative;
+
+  border-radius: 8px;
+  background: var(--grey-g-200);
+  border: 1px solid var(--stroke-s-200);
+  transition: var(--default-transition);
+}
+
+.search::after {
+  top: 50%;
+  left: 8px;
+  content: '';
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  transform: translateY(-50%);
+  background: url(https://crushingit.tech/hackathon-assets/icon-search.svg) no-repeat center;
+}
+
+.search:hover {
+  border: 1px solid var(--stroke-s-100);
+}
+
+.search:is(:active, :focus) {
+  border: 2px solid var(--bg-white);
+}
+
+/* notification */
+.notification {
+  gap: 20px;
+  display: flex;
+  width: max-content;
+}
+
+.notification:hover ~ :is(.notification-bell, .notification-content) {
+  background: var(--font-mid-2);
+}
+
+.notification:active ~ :is(.notification-bell, .notification-content) {
+  background: var(--grey-g-50);
+}
+
+.notification:focus ~ :is(.notification-bell, .notification-content) {
+  background: var(--grey-g-50);
+  box-shadow: 0 0 0 3px var(--states-focused), 0 0 0 1px #000;
+}
+
+.notification-bell {
+  gap: 8px;
+  padding: 6px;
+  align-items: center;
+  display: inline-flex;
+
+  border-radius: 8px;
+  background: var(--grey-g-200) url(https://crushingit.tech/hackathon-assets/icon-bell.svg)
+    no-repeat center;
+  transition: var(--default-transition);
+}
+
+.notification-content {
+  gap: 8px;
+  align-items: center;
+  display: inline-flex;
+  padding: 2px 2px 2px 8px;
+
+  border-radius: 8px;
+  background: var(--grey-g-200);
+  transition: var(--default-transition);
+}
+
+.notification-content > .username {
+  text-edge: cap;
+  leading-trim: both;
+  color: var(--font-light);
+
+  font-size: 12px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 15.6px;
+  font-family: Inter, sans-serif;
+}
+
+.notification-content > .initials {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 5px 10px;
+
+  border-radius: 6px;
+  background: #36fba1;
+
+  text-edge: cap;
+  text-align: center;
+  leading-trim: both;
+  color: rgba(0, 0, 0, 0.4);
+
+  font-size: 12px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 15.6px;
+  font-family: Inter, sans-serif;
+}
+
+/* buttons */
+
+/* button-1 */
+.button-1 {
+  gap: 8px;
+  padding: 6px 12px;
+  align-items: center;
+  display: inline-flex;
+
+  border-radius: 6px;
+  background: #404040;
+  border-top: 1.5px solid var(--stroke-light-100);
+  border-left: 1.5px solid var(--stroke-light-100);
+  border-right: 1.5px solid var(--stroke-light-100);
+  box-shadow: 0 0 0 1.5px #333, 0 1px 0 1.5px #333, 0 2px 0 0 #000;
+  transition: var(--default-transition);
+}
+
+.button-1:hover {
+  background: #2a2a2a;
+}
+
+.button-1:active {
+  background: #2b2b2b;
+  box-shadow: 0 0 0 1.5px #333, 0 3px 0 0 #000 inset;
+}
+
+.button-1:focus {
+  background: #404040;
+  box-shadow: 0 0 0 5px var(--states-focused), 0 0 0 3px #fff, 0 0 0 1.5px #333;
+}
+
+/* button-2 */
+.button-2 {
+  gap: 8px;
+  padding: 6px 12px;
+  align-items: center;
+  display: inline-flex;
+
+  border-radius: 6px;
+  background: var(--bg-white);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -1px 0 0 #b5b5b5 inset;
+  transition: var(--default-transition);
+}
+
+.button-2:hover {
+  background: #f7f7f7;
+  box-shadow: 0 -1px 0 0 #b5b5b5 inset;
+}
+
+.button-2:active {
+  background: #f7f7f7;
+  box-shadow: 0 2px 1.5px 0 #e2e2e2 inset;
+}
+
+.button-2:focus {
+  background: var(--bg-white);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 3px var(--states-focused), 0 0 0 1px #fff, 0 -1px 0 0 #b5b5b5 inset;
+}
+
+/* button-3 */
+.button-3 {
+  gap: 8px;
+  padding: 6px 12px;
+  align-items: center;
+  display: inline-flex;
+
+  border-radius: 6px;
+  transition: var(--default-transition);
+}
+
+.button-3:hover {
+  background: #e7e7e7;
+}
+
+.button-3:active {
+  background: #e0e0e0;
+}
+
+.button-3:focus {
+  background: #fff;
+  border: 2px solid var(--states-focused);
+}
