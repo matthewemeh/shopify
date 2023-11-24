@@ -36,20 +36,20 @@
 
   <body>
     <nav>
-      <a href="https://shopify.com" target="_blank" rel="noopener noreferrer">
+      <a class="nav__logo" href="https://shopify.com" target="_blank" rel="noopener noreferrer">
         <img
           alt="shopify logo"
           src="https://crushingit.tech/hackathon-assets/shopify-icon-desktop.svg"
         />
       </a>
 
-      <div class="search">
+      <div class="nav__search">
         <svg
-          xmlns="http://www.w3.org/2000/svg"
           width="20"
           height="20"
-          viewBox="0 0 20 20"
           fill="none"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             fill-rule="evenodd"
@@ -62,7 +62,7 @@
       </div>
 
       <div class="notification">
-        <div class="notification-bell">
+        <div class="notification__bell">
           <svg
             width="20"
             height="20"
@@ -78,18 +78,18 @@
             />
           </svg>
         </div>
-        <div class="notification-content">
-          <p class="username">Davii Collections</p>
-          <div class="initials">DC</div>
+        <div class="notification__content">
+          <p class="notification__content--username">Davii Collections</p>
+          <div class="notification__content--initials">DC</div>
         </div>
       </div>
     </nav>
 
     <main>
       <div class="alert">
-        <p class="message">Extend your trial for $1/month for 3 months on select plans.</p>
+        <p class="alert__message">Extend your trial for $1/month for 3 months on select plans.</p>
 
-        <div class="options">
+        <div class="alert__options">
           <a
             target="_blank"
             class="button-2"
@@ -98,7 +98,7 @@
             >Select a plan</a
           >
 
-          <button class="close-icon" onclick="closeAlert()">
+          <button class="alert__close" onclick="closeAlert()">
             <svg
               width="20"
               height="20"
@@ -115,8 +115,354 @@
         </div>
       </div>
 
-      <div>
-        <section></section>
+      <div class="todo-list" style="max-height: 120px">
+        <header class="todo-list__header">
+          <div class="todo-list__header--content">
+            <h1 class="todo-list__header--heading">Setup guide</h1>
+            <p class="todo-list__header--subheading">
+              Use this personalized guide to get your store up and running.
+            </p>
+            <div class="todo-list__header--task-completion">
+              <p>0 / 5 completed</p>
+              <progress id="tasks-completion" value="0" max="100"></progress>
+            </div>
+          </div>
+
+          <img
+            alt="icon arrow down"
+            onclick="openSetupTasks()"
+            id="todo-list__header--arrow"
+            src="https://crushingit.tech/hackathon-assets/icon-arrow-down.svg"
+          />
+        </header>
+
+        <div class="todo-list__sections">
+          <section class="todo-list__section inactive">
+            <div class="todo-list__section--content">
+              <svg
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+                onclick="onCheck(0)"
+                xmlns="http://www.w3.org/2000/svg"
+                class="todo-list__section--content--checkmark"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="#8A8A8A"
+                  stroke-width="2.08333"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-dasharray="5 5"
+                />
+              </svg>
+              <svg
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                class="todo-list__section--content--spinner"
+              >
+                <path
+                  stroke="#1C181D"
+                  stroke-width="2.08333"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M22.0004 12C22.0004 13.9778 21.4139 15.9112 20.3151 17.5557C19.2162 19.2002 17.6545 20.4819 15.8272 21.2388C13.9999 21.9957 11.9893 22.1937 10.0495 21.8079C8.10965 21.422 6.32782 20.4696 4.9293 19.0711C3.53077 17.6725 2.57837 15.8907 2.19251 13.9509C1.80666 12.0111 2.00469 10.0004 2.76157 8.17317C3.51845 6.3459 4.80017 4.78412 6.44466 3.6853C8.08916 2.58649 10.0226 2 12.0004 2"
+                />
+              </svg>
+              <img
+                alt=""
+                class="todo-list__section--content--tick"
+                src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
+              />
+              <div class="todo-list__section--content--text">
+                <p class="todo-list__section--heading" onclick="openSetupTask(0)">
+                  Customize your online store
+                </p>
+                <p class="todo-list__section--subheading">
+                  Choose a theme and add your logo, colors, and images to reflect your brand.<span
+                    class="learn-more"
+                    >Learn more</span
+                  >
+                </p>
+                <div class="todo-list__section--buttons">
+                  <button class="button-1">Customize theme</button>
+                </div>
+              </div>
+            </div>
+
+            <img
+              alt="customise store illustration"
+              class="todo-list__section--illustration"
+              src="https://crushingit.tech/hackathon-assets/customise-store.png"
+            />
+          </section>
+
+          <section class="todo-list__section inactive">
+            <div class="todo-list__section--content">
+              <svg
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+                onclick="onCheck(1)"
+                xmlns="http://www.w3.org/2000/svg"
+                class="todo-list__section--content--checkmark"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="#8A8A8A"
+                  stroke-width="2.08333"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-dasharray="5 5"
+                />
+              </svg>
+              <svg
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                class="todo-list__section--content--spinner"
+              >
+                <path
+                  stroke="#1C181D"
+                  stroke-width="2.08333"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M22.0004 12C22.0004 13.9778 21.4139 15.9112 20.3151 17.5557C19.2162 19.2002 17.6545 20.4819 15.8272 21.2388C13.9999 21.9957 11.9893 22.1937 10.0495 21.8079C8.10965 21.422 6.32782 20.4696 4.9293 19.0711C3.53077 17.6725 2.57837 15.8907 2.19251 13.9509C1.80666 12.0111 2.00469 10.0004 2.76157 8.17317C3.51845 6.3459 4.80017 4.78412 6.44466 3.6853C8.08916 2.58649 10.0226 2 12.0004 2"
+                />
+              </svg>
+              <img
+                alt=""
+                class="todo-list__section--content--tick"
+                src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
+              />
+              <div class="todo-list__section--content--text">
+                <p class="todo-list__section--heading" onclick="openSetupTask(1)">
+                  Add your first product
+                </p>
+                <p class="todo-list__section--subheading">
+                  Write a description, add photos, and set pricing for the products you plan to
+                  sell.<span class="learn-more">Learn more</span>
+                </p>
+                <div class="todo-list__section--buttons">
+                  <button class="button-1">Add product</button>
+                  <button class="button-3">Import product</button>
+                </div>
+              </div>
+            </div>
+
+            <img
+              alt="product illustration"
+              class="todo-list__section--illustration"
+              src="https://crushingit.tech/hackathon-assets/product.png"
+            />
+          </section>
+
+          <section class="todo-list__section inactive">
+            <div class="todo-list__section--content">
+              <svg
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+                onclick="onCheck(2)"
+                xmlns="http://www.w3.org/2000/svg"
+                class="todo-list__section--content--checkmark"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="#8A8A8A"
+                  stroke-width="2.08333"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-dasharray="5 5"
+                />
+              </svg>
+              <svg
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                class="todo-list__section--content--spinner"
+              >
+                <path
+                  stroke="#1C181D"
+                  stroke-width="2.08333"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M22.0004 12C22.0004 13.9778 21.4139 15.9112 20.3151 17.5557C19.2162 19.2002 17.6545 20.4819 15.8272 21.2388C13.9999 21.9957 11.9893 22.1937 10.0495 21.8079C8.10965 21.422 6.32782 20.4696 4.9293 19.0711C3.53077 17.6725 2.57837 15.8907 2.19251 13.9509C1.80666 12.0111 2.00469 10.0004 2.76157 8.17317C3.51845 6.3459 4.80017 4.78412 6.44466 3.6853C8.08916 2.58649 10.0226 2 12.0004 2"
+                />
+              </svg>
+              <img
+                alt=""
+                class="todo-list__section--content--tick"
+                src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
+              />
+              <div class="todo-list__section--content--text">
+                <p class="todo-list__section--heading" onclick="openSetupTask(2)">
+                  Add a custom domain
+                </p>
+                <p class="todo-list__section--subheading">
+                  Your current domain is 222219.myshopify.com but you can add a custom domain to
+                  help customers find your online store.<span class="learn-more">Learn more</span>
+                </p>
+                <div class="todo-list__section--buttons">
+                  <button class="button-1">Add domain</button>
+                </div>
+              </div>
+            </div>
+
+            <img
+              alt="website domain illustration"
+              class="todo-list__section--illustration"
+              src="https://crushingit.tech/hackathon-assets/website.png"
+            />
+          </section>
+
+          <section class="todo-list__section inactive">
+            <div class="todo-list__section--content">
+              <svg
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+                onclick="onCheck(3)"
+                xmlns="http://www.w3.org/2000/svg"
+                class="todo-list__section--content--checkmark"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="#8A8A8A"
+                  stroke-width="2.08333"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-dasharray="5 5"
+                />
+              </svg>
+              <svg
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                class="todo-list__section--content--spinner"
+              >
+                <path
+                  stroke="#1C181D"
+                  stroke-width="2.08333"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M22.0004 12C22.0004 13.9778 21.4139 15.9112 20.3151 17.5557C19.2162 19.2002 17.6545 20.4819 15.8272 21.2388C13.9999 21.9957 11.9893 22.1937 10.0495 21.8079C8.10965 21.422 6.32782 20.4696 4.9293 19.0711C3.53077 17.6725 2.57837 15.8907 2.19251 13.9509C1.80666 12.0111 2.00469 10.0004 2.76157 8.17317C3.51845 6.3459 4.80017 4.78412 6.44466 3.6853C8.08916 2.58649 10.0226 2 12.0004 2"
+                />
+              </svg>
+              <img
+                alt=""
+                class="todo-list__section--content--tick"
+                src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
+              />
+              <div class="todo-list__section--content--text">
+                <p class="todo-list__section--heading" onclick="openSetupTask(3)">
+                  Name your store
+                </p>
+                <p class="todo-list__section--subheading">
+                  Your temporary store name is currently Davii collections. The store name appears
+                  in your admin and your online store.<span class="learn-more">Learn more</span>
+                </p>
+                <div class="todo-list__section--buttons">
+                  <button class="button-1">Name store</button>
+                </div>
+              </div>
+            </div>
+
+            <img
+              alt="name store illustration"
+              class="todo-list__section--illustration"
+              src="https://crushingit.tech/hackathon-assets/name-store.png"
+            />
+          </section>
+
+          <section class="todo-list__section inactive">
+            <div class="todo-list__section--content">
+              <svg
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+                onclick="onCheck(4)"
+                xmlns="http://www.w3.org/2000/svg"
+                class="todo-list__section--content--checkmark"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="#8A8A8A"
+                  stroke-width="2.08333"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-dasharray="5 5"
+                />
+              </svg>
+              <svg
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                class="todo-list__section--content--spinner"
+              >
+                <path
+                  stroke="#1C181D"
+                  stroke-width="2.08333"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M22.0004 12C22.0004 13.9778 21.4139 15.9112 20.3151 17.5557C19.2162 19.2002 17.6545 20.4819 15.8272 21.2388C13.9999 21.9957 11.9893 22.1937 10.0495 21.8079C8.10965 21.422 6.32782 20.4696 4.9293 19.0711C3.53077 17.6725 2.57837 15.8907 2.19251 13.9509C1.80666 12.0111 2.00469 10.0004 2.76157 8.17317C3.51845 6.3459 4.80017 4.78412 6.44466 3.6853C8.08916 2.58649 10.0226 2 12.0004 2"
+                />
+              </svg>
+              <img
+                alt=""
+                class="todo-list__section--content--tick"
+                src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
+              />
+              <div class="todo-list__section--content--text">
+                <p class="todo-list__section--heading" onclick="openSetupTask(4)">
+                  Set up a payment provider
+                </p>
+                <p class="todo-list__section--subheading">
+                  Choose a payment provider to start accepting payments. You'll need to create an
+                  account with the payment provider and set it up with your Shopify store.<span
+                    class="learn-more"
+                    >Learn more</span
+                  >
+                </p>
+                <div class="todo-list__section--buttons">
+                  <button class="button-1">Set up payment</button>
+                </div>
+              </div>
+            </div>
+
+            <img
+              alt="payment method illustration"
+              class="todo-list__section--illustration"
+              src="https://crushingit.tech/hackathon-assets/payment.png"
+            />
+          </section>
+        </div>
       </div>
     </main>
   </body>
