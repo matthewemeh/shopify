@@ -260,6 +260,10 @@ nav {
   display: none !important;
 }
 
+.animate-none {
+  animation: none;
+}
+
 .rotate-180 {
   transform: rotate(180deg);
 }
@@ -375,11 +379,13 @@ main {
   width: 72px;
   height: 4px;
 }
+
 progress::-webkit-progress-bar {
   background-color: #e3e3e3;
   border-top-right-radius: 28px;
   border-bottom-right-radius: 28px;
 }
+
 progress::-webkit-progress-value {
   background-color: #1a1a1a;
   border-top-left-radius: 28px;
@@ -449,10 +455,12 @@ progress::-webkit-progress-value {
 
 .todo-list__section--content--tick.active {
   display: block;
+  cursor: pointer;
   animation: checked 200ms ease-in;
 }
 
 .todo-list__section--content--checkmark {
+  display: block;
   cursor: pointer;
 }
 

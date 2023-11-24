@@ -55,9 +55,31 @@ const getCompletedTasks = () => {
   return completedTasks;
 };
 
-const onCheck = taskIndex => {
+const updateProgress = () => {
+  const ticks = document.querySelectorAll('.todo-list__section--content--tick');
+
+  // update progress...
+  const progressText = document.querySelector('.todo-list__header--task-completion p');
+  progressText.innerText = `${getCompletedTasks().toString()} / ${ticks.length} completed`;
+
+  const progressBar = document.querySelector('#tasks-completion');
+  progressBar.value = `${(getCompletedTasks() / ticks.length) * 100}`;
+};
+
+const toggleCheck = taskIndex => {
   const checkboxes = document.querySelectorAll('.todo-list__section--content--checkmark');
   const clickedCheckbox = checkboxes[taskIndex];
+
+  if (clickedCheckbox.classList.contains('checked')) {
+    clickedCheckbox.classList.remove('checked');
+
+    const ticks = document.querySelectorAll('.todo-list__section--content--tick');
+    ticks[taskIndex].classList.remove('active');
+
+    updateProgress();
+
+    return;
+  }
 
   // initiate loading animation...
   clickedCheckbox.classList.add('checked');
@@ -66,8 +88,7 @@ const onCheck = taskIndex => {
   setTimeout(() => {
     const spinners = document.querySelectorAll('.todo-list__section--content--spinner');
     const currentSpinner = spinners[taskIndex];
-    currentSpinner.style.animation = 'none';
-    currentSpinner.style.display = 'none';
+    currentSpinner.classList.add('hidden', 'animate-none');
 
     const ticks = document.querySelectorAll('.todo-list__section--content--tick');
     const currentTick = ticks[taskIndex];
@@ -76,12 +97,7 @@ const onCheck = taskIndex => {
     const setupTasks = document.querySelectorAll('.todo-list__section');
     closeAllTasks(setupTasks);
 
-    // update progress...
-    const progressText = document.querySelector('.todo-list__header--task-completion p');
-    progressText.innerText = `${getCompletedTasks().toString()} / ${ticks.length} completed`;
-
-    const progressBar = document.querySelector('#tasks-completion');
-    progressBar.value = `${(getCompletedTasks() / ticks.length) * 100}`;
+    updateProgress();
 
     // ...then move to next incomplete task
     for (let i = 0; i < ticks.length; i++) {
