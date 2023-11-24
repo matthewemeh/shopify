@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="app.css" />
+    <script src="app.js"></script>
 
     <meta name="description" content="Website for Shopify" />
 
@@ -29,8 +31,93 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
     />
 
-    <title>Shopify</title>
+    <title>Shopify Dashboard</title>
   </head>
 
-  <body></body>
+  <body>
+    <nav>
+      <a href="https://shopify.com" target="_blank" rel="noopener noreferrer">
+        <img
+          alt="shopify logo"
+          src="https://crushingit.tech/hackathon-assets/shopify-icon-desktop.svg"
+        />
+      </a>
+
+      <div class="search">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M12.3226 13.3833C11.3996 14.0841 10.2484 14.5 9 14.5C5.96243 14.5 3.5 12.0376 3.5 9C3.5 5.96243 5.96243 3.5 9 3.5C12.0376 3.5 14.5 5.96243 14.5 9C14.5 10.2484 14.0841 11.3996 13.3833 12.3226L16.2803 15.2197C16.5732 15.5126 16.5732 15.9874 16.2803 16.2803C15.9874 16.5732 15.5126 16.5732 15.2197 16.2803L12.3226 13.3833ZM13 9C13 11.2091 11.2091 13 9 13C6.79086 13 5 11.2091 5 9C5 6.79086 6.79086 5 9 5C11.2091 5 13 6.79086 13 9Z"
+            fill="#B5B5B5"
+          />
+        </svg>
+        <input type="text" placeholder="Search" />
+      </div>
+
+      <div class="notification">
+        <div class="notification-bell">
+          <svg
+            width="20"
+            height="20"
+            fill="none"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill="#E3E3E3"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M7.25203 14.4239L4.8061 14.1427C2.95144 13.9295 2.42542 11.4844 4.02838 10.5274L4.0933 10.4886C4.966 9.96761 5.50045 9.02609 5.50045 8.00969V7.5C5.50045 5.01472 7.51517 3 10.0005 3C12.4857 3 14.5005 5.01472 14.5005 7.5V8.00969C14.5005 9.02609 15.0349 9.96761 15.9076 10.4886L15.9725 10.5274C17.5755 11.4844 17.0495 13.9295 15.1948 14.1427L12.652 14.435V14.8C12.652 16.2912 11.4432 17.5 9.95203 17.5C8.46086 17.5 7.25203 16.2912 7.25203 14.8V14.4239ZM11.152 14.5H8.75203V14.8C8.75203 15.4627 9.28929 16 9.95203 16C10.6148 16 11.152 15.4627 11.152 14.8V14.5ZM8.00045 13H12.0005L15.0235 12.6525C15.453 12.6032 15.5748 12.0369 15.2036 11.8153L15.1387 11.7766C15.0591 11.7291 14.9815 11.6793 14.9057 11.6273C14.7506 11.521 14.6036 11.4055 14.4651 11.2818C14.4405 11.2598 14.4162 11.2377 14.3922 11.2152C13.5144 10.395 13.0005 9.23833 13.0005 8.00969V7.5C13.0005 5.84315 11.6573 4.5 10.0005 4.5C8.3436 4.5 7.00045 5.84315 7.00045 7.5V8.00969C7.00045 9.23833 6.48651 10.395 5.60871 11.2152C5.58469 11.2377 5.56039 11.2598 5.53583 11.2818C5.39734 11.4055 5.25029 11.521 5.09523 11.6273C5.01945 11.6793 4.94176 11.7291 4.86222 11.7766L4.79729 11.8153C4.4261 12.0369 4.5479 12.6032 4.97739 12.6525L8.00045 13Z"
+            />
+          </svg>
+        </div>
+        <div class="notification-content">
+          <p class="username">Davii Collections</p>
+          <div class="initials">DC</div>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="alert">
+        <p class="message">Extend your trial for $1/month for 3 months on select plans.</p>
+
+        <div class="options">
+          <a
+            target="_blank"
+            class="button-2"
+            rel="noopener noreferrer"
+            href="https://shopify.com/pricing"
+            >Select a plan</a
+          >
+
+          <button class="close-icon" onclick="closeAlert()">
+            <svg
+              width="20"
+              height="20"
+              fill="none"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill="#E3E3E3"
+                d="M13.9697 15.0303C14.2626 15.3232 14.7374 15.3232 15.0303 15.0303C15.3232 14.7374 15.3232 14.2626 15.0303 13.9697L11.0607 10L15.0303 6.03033C15.3232 5.73744 15.3232 5.26256 15.0303 4.96967C14.7374 4.67678 14.2626 4.67678 13.9697 4.96967L10 8.93934L6.03033 4.96967C5.73744 4.67678 5.26256 4.67678 4.96967 4.96967C4.67678 5.26256 4.67678 5.73744 4.96967 6.03033L8.93934 10L4.96967 13.9697C4.67678 14.2626 4.67678 14.7374 4.96967 15.0303C5.26256 15.3232 5.73744 15.3232 6.03033 15.0303L10 11.0607L13.9697 15.0303Z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <section></section>
+      </div>
+    </main>
+  </body>
 </html>
