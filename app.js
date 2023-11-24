@@ -56,43 +56,36 @@ const getCompletedTasks = () => {
 };
 
 const updateProgress = () => {
-  const ticks = document.querySelectorAll('.todo-list__section--content--tick');
+  const setupTasks = document.querySelectorAll('.todo-list__section');
 
   // update progress...
   const progressText = document.querySelector('.todo-list__header--task-completion p');
-  progressText.innerText = `${getCompletedTasks().toString()} / ${ticks.length} completed`;
+  progressText.innerText = `${getCompletedTasks().toString()} / ${setupTasks.length} completed`;
 
   const progressBar = document.querySelector('#tasks-completion');
-  progressBar.value = `${(getCompletedTasks() / ticks.length) * 100}`;
+  progressBar.value = `${(getCompletedTasks() / setupTasks.length) * 100}`;
 };
 
-const toggleCheck = taskIndex => {
-  const checkboxes = document.querySelectorAll('.todo-list__section--content--checkmark');
-  const clickedCheckbox = checkboxes[taskIndex];
+const onUncheck = taskIndex => {
+  const indicators = document.querySelectorAll('.todo-list__section--indicators');
+  const currentIndicator = indicators[taskIndex];
 
-  if (clickedCheckbox.classList.contains('checked')) {
-    clickedCheckbox.classList.remove('checked');
+  currentIndicator.classList.remove('checked');
 
-    const ticks = document.querySelectorAll('.todo-list__section--content--tick');
-    ticks[taskIndex].classList.remove('active');
+  updateProgress();
+};
 
-    updateProgress();
-
-    return;
-  }
+const onCheck = taskIndex => {
+  const indicators = document.querySelectorAll('.todo-list__section--indicators');
+  const currentIndicator = indicators[taskIndex];
 
   // initiate loading animation...
-  clickedCheckbox.classList.add('checked');
+  currentIndicator.classList.add('loading');
 
   // ...then check the checkbox after a few seconds
   setTimeout(() => {
-    const spinners = document.querySelectorAll('.todo-list__section--content--spinner');
-    const currentSpinner = spinners[taskIndex];
-    currentSpinner.classList.add('hidden', 'animate-none');
-
-    const ticks = document.querySelectorAll('.todo-list__section--content--tick');
-    const currentTick = ticks[taskIndex];
-    currentTick.classList.add('active');
+    currentIndicator.classList.remove('loading');
+    currentIndicator.classList.add('checked');
 
     const setupTasks = document.querySelectorAll('.todo-list__section');
     closeAllTasks(setupTasks);
@@ -100,12 +93,84 @@ const toggleCheck = taskIndex => {
     updateProgress();
 
     // ...then move to next incomplete task
-    for (let i = 0; i < ticks.length; i++) {
-      const currentTick = ticks[i];
-      if (!currentTick.classList.contains('active')) {
+    for (let i = 0; i < indicators.length; i++) {
+      if (!indicators[i].classList.contains('checked')) {
         openSetupTask(i);
         break;
       }
     }
-  }, 1500);
+  }, 1000);
+};
+
+const closeAllPopups = () => {
+  const popups = document.querySelectorAll('.popup');
+
+  popups.forEach(popup => {
+    popup.classList.remove('active');
+  });
+};
+
+const showOverlay = () => {
+  const overlay = document.querySelector('.overlay');
+  overlay?.classList?.add('active');
+};
+
+const hideOverlay = () => {
+  const overlay = document.querySelector('.overlay');
+  overlay?.classList?.remove('active');
+};
+
+const toggleOverlay = () => {
+  const overlay = document.querySelector('.overlay');
+  overlay?.classList?.toggle('active');
+};
+
+const toggleNotificationAlerts = () => {
+  closeAllPopups();
+
+  const alertDiv = document.querySelector('.notification__alert');
+  alertDiv.classList.toggle('active');
+
+  toggleOverlay();
+};
+
+const openNotificationAlerts = () => {
+  closeAllPopups();
+
+  const alertDiv = document.querySelector('.notification__alert');
+  alertDiv.classList.add('active');
+
+  showOverlay();
+};
+
+const closeNotificationAlerts = () => {
+  const alertDiv = document.querySelector('.notification__alert');
+  alertDiv.classList.remove('active');
+
+  hideOverlay();
+};
+
+const toggleNotificationMenu = () => {
+  closeAllPopups();
+
+  const menu = document.querySelector('.notification__menu');
+  menu.classList.toggle('active');
+
+  toggleOverlay();
+};
+
+const openNotificationMenu = () => {
+  closeAllPopups();
+
+  const menu = document.querySelector('.notification__menu');
+  menu.classList.add('active');
+
+  showOverlay();
+};
+
+const closeNotificationMenu = () => {
+  const menu = document.querySelector('.notification__menu');
+  menu.classList.remove('active');
+
+  hideOverlay();
 };

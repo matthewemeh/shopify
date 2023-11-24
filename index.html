@@ -62,7 +62,7 @@
       </div>
 
       <div class="notification">
-        <div class="notification__bell">
+        <div class="notification__bell" onclick="toggleNotificationAlerts()">
           <svg
             width="20"
             height="20"
@@ -78,14 +78,187 @@
             />
           </svg>
         </div>
-        <div class="notification__content">
+
+        <div class="notification__content" onclick="toggleNotificationMenu()">
           <p class="notification__content--username">Davii Collections</p>
           <div class="notification__content--initials">DC</div>
+        </div>
+      </div>
+
+      <div class="notification__alert popup">
+        <div class="notification__alert--header">
+          <p class="notification__alert--header--text">Alerts</p>
+          <div class="notification__alert--header--buttons">
+            <svg
+              width="20"
+              height="20"
+              fill="none"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill="#616161"
+                d="M3 6C3 5.58579 3.33579 5.25 3.75 5.25H16.25C16.6642 5.25 17 5.58579 17 6C17 6.41421 16.6642 6.75 16.25 6.75H3.75C3.33579 6.75 3 6.41421 3 6Z"
+              />
+              <path
+                fill="#616161"
+                d="M6.75 14C6.75 13.5858 7.08579 13.25 7.5 13.25H12.5C12.9142 13.25 13.25 13.5858 13.25 14C13.25 14.4142 12.9142 14.75 12.5 14.75H7.5C7.08579 14.75 6.75 14.4142 6.75 14Z"
+              />
+              <path
+                fill="#616161"
+                d="M5.5 9.25C5.08579 9.25 4.75 9.58579 4.75 10C4.75 10.4142 5.08579 10.75 5.5 10.75H14.5C14.9142 10.75 15.25 10.4142 15.25 10C15.25 9.58579 14.9142 9.25 14.5 9.25H5.5Z"
+              />
+            </svg>
+
+            <svg
+              width="20"
+              height="20"
+              fill="none"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill="#616161"
+                d="M13.2803 9.03033C13.5732 8.73744 13.5732 8.26256 13.2803 7.96967C12.9874 7.67678 12.5126 7.67678 12.2197 7.96967L9.25 10.9393L8.03033 9.71967C7.73744 9.42678 7.26256 9.42678 6.96967 9.71967C6.67678 10.0126 6.67678 10.4874 6.96967 10.7803L8.71967 12.5303C9.01256 12.8232 9.48744 12.8232 9.78033 12.5303L13.2803 9.03033Z"
+              />
+              <path
+                fill="#616161"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10ZM15.5 10C15.5 13.0376 13.0376 15.5 10 15.5C6.96243 15.5 4.5 13.0376 4.5 10C4.5 6.96243 6.96243 4.5 10 4.5C13.0376 4.5 15.5 6.96243 15.5 10Z"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div class="notification__alert--main">
+          Alerts about your store and account will show here
+        </div>
+      </div>
+
+      <div class="notification__menu popup">
+        <div class="notification__menu--header">
+          <button oncl class="notification__menu--header--profile">
+            <div class="notification__menu--header--profile--initials">DC</div>
+            <p class="notification__menu--header--profile--username">Davii Collections</p>
+            <svg
+              width="16"
+              height="16"
+              fill="none"
+              viewBox="0 0 16 16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke="#303030"
+                stroke-width="1.33333"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M13.3332 4L5.99984 11.3333L2.6665 8"
+              />
+            </svg>
+          </button>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://admin.shopify.com"
+            class="notification__menu--header--stores"
+          >
+            <svg
+              width="20"
+              height="20"
+              fill="none"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill="#303030"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M13.257 3H6.74302C6.35944 3 5.9971 3.17611 5.76012 3.47772L3.37394 6.51468C3.13169 6.823 3 7.20375 3 7.59586V8.25C3 9.31867 3.60958 10.245 4.5 10.7001V15.25C4.5 16.2165 5.2835 17 6.25 17H13.75C14.7165 17 15.5 16.2165 15.5 15.25V10.7001C16.3904 10.245 17 9.31867 17 8.25V7.76879C17 7.26465 16.8307 6.77511 16.5192 6.3787L14.2399 3.47772C14.0029 3.17611 13.6406 3 13.257 3ZM13 15.5H13.75C13.8881 15.5 14 15.3881 14 15.25V11C13.212 11 12.5014 10.6686 12 10.1375C11.4986 10.6686 10.788 11 10 11C9.21199 11 8.50138 10.6686 8 10.1375C7.49862 10.6686 6.78801 11 6 11V15.25C6 15.3881 6.11193 15.5 6.25 15.5H10V13C10 12.4477 10.4477 12 11 12H12C12.5523 12 13 12.4477 13 13V15.5ZM6 9.5H5.75C5.05964 9.5 4.5 8.94036 4.5 8.25V7.59586C4.5 7.53985 4.51881 7.48545 4.55342 7.44141L6.86453 4.5H13.1355L15.3397 7.30543C15.4436 7.43757 15.5 7.60075 15.5 7.76879V8.25C15.5 8.94036 14.9404 9.5 14.25 9.5H14C13.3096 9.5 12.75 8.94036 12.75 8.25V7.75C12.75 7.33579 12.4142 7 12 7C11.5858 7 11.25 7.33579 11.25 7.75V8.25C11.25 8.94036 10.6904 9.5 10 9.5C9.30964 9.5 8.75 8.94036 8.75 8.25V7.75C8.75 7.33579 8.41421 7 8 7C7.58579 7 7.25 7.33579 7.25 7.75V8.25C7.25 8.94036 6.69036 9.5 6 9.5Z"
+              />
+            </svg>
+            <p>All stores</p>
+          </a>
+        </div>
+
+        <div class="notification__menu--main">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://admin.shopify.com"
+            class="notification__menu--header--link"
+          >
+            Help Center
+          </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://admin.shopify.com"
+            class="notification__menu--header--link"
+          >
+            Changelog
+          </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://admin.shopify.com"
+            class="notification__menu--header--link"
+          >
+            Community forums
+          </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://admin.shopify.com"
+            class="notification__menu--header--link"
+          >
+            Hire a Shopify Partner
+          </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://admin.shopify.com"
+            class="notification__menu--header--link"
+          >
+            Keyboard shortcuts
+          </a>
+        </div>
+
+        <div class="notification__menu--footer">
+          <a
+            target="_blank"
+            id="profile-link"
+            rel="noopener noreferrer"
+            href="https://admin.shopify.com"
+            class="notification__menu--header--link"
+          >
+            <span class="fullname">David Micheal</span>
+            <span class="email">davidmicheal@gmail.com</span>
+          </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://admin.shopify.com"
+            class="notification__menu--header--link"
+          >
+            Manage account
+          </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://admin.shopify.com"
+            class="notification__menu--header--link"
+          >
+            Log out
+          </a>
         </div>
       </div>
     </nav>
 
     <main>
+      <!-- <div class="overlay" onclick="closeNotificationAlerts()"></div> -->
+      <!-- <div class="overlay" onclick="closeNotificationMenu()"></div> -->
+
       <div class="alert">
         <p class="alert__message">Extend your trial for $1/month for 3 months on select plans.</p>
 
@@ -139,47 +312,51 @@
         <div class="todo-list__sections">
           <section class="todo-list__section inactive">
             <div class="todo-list__section--content">
-              <svg
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-                onclick="toggleCheck(0)"
-                xmlns="http://www.w3.org/2000/svg"
-                class="todo-list__section--content--checkmark"
-              >
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="#8A8A8A"
-                  stroke-width="2.08333"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-dasharray="5 5"
+              <div class="todo-list__section--indicators">
+                <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  onclick="onCheck(0)"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="todo-list__section--content--checkmark"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="#8A8A8A"
+                    stroke-width="2.08333"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-dasharray="5 5"
+                  />
+                </svg>
+                <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="todo-list__section--content--spinner"
+                >
+                  <path
+                    stroke="#1C181D"
+                    stroke-width="2.08333"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M22.0004 12C22.0004 13.9778 21.4139 15.9112 20.3151 17.5557C19.2162 19.2002 17.6545 20.4819 15.8272 21.2388C13.9999 21.9957 11.9893 22.1937 10.0495 21.8079C8.10965 21.422 6.32782 20.4696 4.9293 19.0711C3.53077 17.6725 2.57837 15.8907 2.19251 13.9509C1.80666 12.0111 2.00469 10.0004 2.76157 8.17317C3.51845 6.3459 4.80017 4.78412 6.44466 3.6853C8.08916 2.58649 10.0226 2 12.0004 2"
+                  />
+                </svg>
+                <img
+                  alt=""
+                  onclick="onUncheck(0)"
+                  class="todo-list__section--content--tick"
+                  src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
                 />
-              </svg>
-              <svg
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                class="todo-list__section--content--spinner"
-              >
-                <path
-                  stroke="#1C181D"
-                  stroke-width="2.08333"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M22.0004 12C22.0004 13.9778 21.4139 15.9112 20.3151 17.5557C19.2162 19.2002 17.6545 20.4819 15.8272 21.2388C13.9999 21.9957 11.9893 22.1937 10.0495 21.8079C8.10965 21.422 6.32782 20.4696 4.9293 19.0711C3.53077 17.6725 2.57837 15.8907 2.19251 13.9509C1.80666 12.0111 2.00469 10.0004 2.76157 8.17317C3.51845 6.3459 4.80017 4.78412 6.44466 3.6853C8.08916 2.58649 10.0226 2 12.0004 2"
-                />
-              </svg>
-              <img
-                alt=""
-                class="todo-list__section--content--tick"
-                src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
-              />
+              </div>
+
               <div class="todo-list__section--content--text">
                 <p class="todo-list__section--heading" onclick="openSetupTask(0)">
                   Customize your online store
@@ -205,47 +382,51 @@
 
           <section class="todo-list__section inactive">
             <div class="todo-list__section--content">
-              <svg
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-                onclick="toggleCheck(1)"
-                xmlns="http://www.w3.org/2000/svg"
-                class="todo-list__section--content--checkmark"
-              >
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="#8A8A8A"
-                  stroke-width="2.08333"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-dasharray="5 5"
+              <div class="todo-list__section--indicators">
+                <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  onclick="onCheck(1)"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="todo-list__section--content--checkmark"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="#8A8A8A"
+                    stroke-width="2.08333"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-dasharray="5 5"
+                  />
+                </svg>
+                <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="todo-list__section--content--spinner"
+                >
+                  <path
+                    stroke="#1C181D"
+                    stroke-width="2.08333"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M22.0004 12C22.0004 13.9778 21.4139 15.9112 20.3151 17.5557C19.2162 19.2002 17.6545 20.4819 15.8272 21.2388C13.9999 21.9957 11.9893 22.1937 10.0495 21.8079C8.10965 21.422 6.32782 20.4696 4.9293 19.0711C3.53077 17.6725 2.57837 15.8907 2.19251 13.9509C1.80666 12.0111 2.00469 10.0004 2.76157 8.17317C3.51845 6.3459 4.80017 4.78412 6.44466 3.6853C8.08916 2.58649 10.0226 2 12.0004 2"
+                  />
+                </svg>
+                <img
+                  alt=""
+                  onclick="onUncheck(1)"
+                  class="todo-list__section--content--tick"
+                  src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
                 />
-              </svg>
-              <svg
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                class="todo-list__section--content--spinner"
-              >
-                <path
-                  stroke="#1C181D"
-                  stroke-width="2.08333"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M22.0004 12C22.0004 13.9778 21.4139 15.9112 20.3151 17.5557C19.2162 19.2002 17.6545 20.4819 15.8272 21.2388C13.9999 21.9957 11.9893 22.1937 10.0495 21.8079C8.10965 21.422 6.32782 20.4696 4.9293 19.0711C3.53077 17.6725 2.57837 15.8907 2.19251 13.9509C1.80666 12.0111 2.00469 10.0004 2.76157 8.17317C3.51845 6.3459 4.80017 4.78412 6.44466 3.6853C8.08916 2.58649 10.0226 2 12.0004 2"
-                />
-              </svg>
-              <img
-                alt=""
-                class="todo-list__section--content--tick"
-                src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
-              />
+              </div>
+
               <div class="todo-list__section--content--text">
                 <p class="todo-list__section--heading" onclick="openSetupTask(1)">
                   Add your first product
@@ -270,47 +451,51 @@
 
           <section class="todo-list__section inactive">
             <div class="todo-list__section--content">
-              <svg
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-                onclick="toggleCheck(2)"
-                xmlns="http://www.w3.org/2000/svg"
-                class="todo-list__section--content--checkmark"
-              >
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="#8A8A8A"
-                  stroke-width="2.08333"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-dasharray="5 5"
+              <div class="todo-list__section--indicators">
+                <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  onclick="onCheck(2)"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="todo-list__section--content--checkmark"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="#8A8A8A"
+                    stroke-width="2.08333"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-dasharray="5 5"
+                  />
+                </svg>
+                <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="todo-list__section--content--spinner"
+                >
+                  <path
+                    stroke="#1C181D"
+                    stroke-width="2.08333"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M22.0004 12C22.0004 13.9778 21.4139 15.9112 20.3151 17.5557C19.2162 19.2002 17.6545 20.4819 15.8272 21.2388C13.9999 21.9957 11.9893 22.1937 10.0495 21.8079C8.10965 21.422 6.32782 20.4696 4.9293 19.0711C3.53077 17.6725 2.57837 15.8907 2.19251 13.9509C1.80666 12.0111 2.00469 10.0004 2.76157 8.17317C3.51845 6.3459 4.80017 4.78412 6.44466 3.6853C8.08916 2.58649 10.0226 2 12.0004 2"
+                  />
+                </svg>
+                <img
+                  alt=""
+                  onclick="onUncheck(2)"
+                  class="todo-list__section--content--tick"
+                  src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
                 />
-              </svg>
-              <svg
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                class="todo-list__section--content--spinner"
-              >
-                <path
-                  stroke="#1C181D"
-                  stroke-width="2.08333"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M22.0004 12C22.0004 13.9778 21.4139 15.9112 20.3151 17.5557C19.2162 19.2002 17.6545 20.4819 15.8272 21.2388C13.9999 21.9957 11.9893 22.1937 10.0495 21.8079C8.10965 21.422 6.32782 20.4696 4.9293 19.0711C3.53077 17.6725 2.57837 15.8907 2.19251 13.9509C1.80666 12.0111 2.00469 10.0004 2.76157 8.17317C3.51845 6.3459 4.80017 4.78412 6.44466 3.6853C8.08916 2.58649 10.0226 2 12.0004 2"
-                />
-              </svg>
-              <img
-                alt=""
-                class="todo-list__section--content--tick"
-                src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
-              />
+              </div>
+
               <div class="todo-list__section--content--text">
                 <p class="todo-list__section--heading" onclick="openSetupTask(2)">
                   Add a custom domain
@@ -334,47 +519,51 @@
 
           <section class="todo-list__section inactive">
             <div class="todo-list__section--content">
-              <svg
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-                onclick="toggleCheck(3)"
-                xmlns="http://www.w3.org/2000/svg"
-                class="todo-list__section--content--checkmark"
-              >
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="#8A8A8A"
-                  stroke-width="2.08333"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-dasharray="5 5"
+              <div class="todo-list__section--indicators">
+                <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  onclick="onCheck(3)"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="todo-list__section--content--checkmark"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="#8A8A8A"
+                    stroke-width="2.08333"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-dasharray="5 5"
+                  />
+                </svg>
+                <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="todo-list__section--content--spinner"
+                >
+                  <path
+                    stroke="#1C181D"
+                    stroke-width="2.08333"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M22.0004 12C22.0004 13.9778 21.4139 15.9112 20.3151 17.5557C19.2162 19.2002 17.6545 20.4819 15.8272 21.2388C13.9999 21.9957 11.9893 22.1937 10.0495 21.8079C8.10965 21.422 6.32782 20.4696 4.9293 19.0711C3.53077 17.6725 2.57837 15.8907 2.19251 13.9509C1.80666 12.0111 2.00469 10.0004 2.76157 8.17317C3.51845 6.3459 4.80017 4.78412 6.44466 3.6853C8.08916 2.58649 10.0226 2 12.0004 2"
+                  />
+                </svg>
+                <img
+                  alt=""
+                  onclick="onUncheck(3)"
+                  class="todo-list__section--content--tick"
+                  src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
                 />
-              </svg>
-              <svg
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                class="todo-list__section--content--spinner"
-              >
-                <path
-                  stroke="#1C181D"
-                  stroke-width="2.08333"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M22.0004 12C22.0004 13.9778 21.4139 15.9112 20.3151 17.5557C19.2162 19.2002 17.6545 20.4819 15.8272 21.2388C13.9999 21.9957 11.9893 22.1937 10.0495 21.8079C8.10965 21.422 6.32782 20.4696 4.9293 19.0711C3.53077 17.6725 2.57837 15.8907 2.19251 13.9509C1.80666 12.0111 2.00469 10.0004 2.76157 8.17317C3.51845 6.3459 4.80017 4.78412 6.44466 3.6853C8.08916 2.58649 10.0226 2 12.0004 2"
-                />
-              </svg>
-              <img
-                alt=""
-                class="todo-list__section--content--tick"
-                src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
-              />
+              </div>
+
               <div class="todo-list__section--content--text">
                 <p class="todo-list__section--heading" onclick="openSetupTask(3)">
                   Name your store
@@ -398,47 +587,51 @@
 
           <section class="todo-list__section inactive">
             <div class="todo-list__section--content">
-              <svg
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-                onclick="toggleCheck(4)"
-                xmlns="http://www.w3.org/2000/svg"
-                class="todo-list__section--content--checkmark"
-              >
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="#8A8A8A"
-                  stroke-width="2.08333"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-dasharray="5 5"
+              <div class="todo-list__section--indicators">
+                <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  onclick="onCheck(4)"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="todo-list__section--content--checkmark"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="#8A8A8A"
+                    stroke-width="2.08333"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-dasharray="5 5"
+                  />
+                </svg>
+                <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="todo-list__section--content--spinner"
+                >
+                  <path
+                    stroke="#1C181D"
+                    stroke-width="2.08333"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M22.0004 12C22.0004 13.9778 21.4139 15.9112 20.3151 17.5557C19.2162 19.2002 17.6545 20.4819 15.8272 21.2388C13.9999 21.9957 11.9893 22.1937 10.0495 21.8079C8.10965 21.422 6.32782 20.4696 4.9293 19.0711C3.53077 17.6725 2.57837 15.8907 2.19251 13.9509C1.80666 12.0111 2.00469 10.0004 2.76157 8.17317C3.51845 6.3459 4.80017 4.78412 6.44466 3.6853C8.08916 2.58649 10.0226 2 12.0004 2"
+                  />
+                </svg>
+                <img
+                  alt=""
+                  onclick="onUncheck(4)"
+                  class="todo-list__section--content--tick"
+                  src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
                 />
-              </svg>
-              <svg
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                class="todo-list__section--content--spinner"
-              >
-                <path
-                  stroke="#1C181D"
-                  stroke-width="2.08333"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M22.0004 12C22.0004 13.9778 21.4139 15.9112 20.3151 17.5557C19.2162 19.2002 17.6545 20.4819 15.8272 21.2388C13.9999 21.9957 11.9893 22.1937 10.0495 21.8079C8.10965 21.422 6.32782 20.4696 4.9293 19.0711C3.53077 17.6725 2.57837 15.8907 2.19251 13.9509C1.80666 12.0111 2.00469 10.0004 2.76157 8.17317C3.51845 6.3459 4.80017 4.78412 6.44466 3.6853C8.08916 2.58649 10.0226 2 12.0004 2"
-                />
-              </svg>
-              <img
-                alt=""
-                class="todo-list__section--content--tick"
-                src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
-              />
+              </div>
+
               <div class="todo-list__section--content--text">
                 <p class="todo-list__section--heading" onclick="openSetupTask(4)">
                   Set up a payment provider
