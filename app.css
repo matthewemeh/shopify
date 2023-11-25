@@ -170,8 +170,8 @@ button {
   padding: 16px;
   position: absolute;
   visibility: hidden;
-  top: calc(100% + 8px);
   display: inline-flex;
+  top: calc(100% + 8px);
   flex-direction: column;
   align-items: flex-start;
 
@@ -195,9 +195,14 @@ button {
 }
 
 .notification__alert--header--text {
+  gap: 16px;
   display: flex;
   align-items: flex-start;
-  gap: 16px;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--grey-g-200);
+  line-height: 140%; /* 19.6px */
 }
 
 .notification__alert--header--buttons {
@@ -208,6 +213,14 @@ button {
 
 .notification__alert--header--buttons svg {
   cursor: pointer;
+}
+
+.notification__alert--header--buttons > button {
+  border: 2px solid transparent;
+}
+
+.notification__alert--header--buttons > button:focus {
+  border-color: var(--states-focused);
 }
 
 .notification__alert--main {
@@ -301,6 +314,7 @@ button {
 
 .notification__menu--header--profile--username {
   font-size: 13px;
+  text-align: left;
   font-weight: 600;
   color: var(--grey-g-200);
   line-height: 140%; /* 18.2px */
@@ -309,11 +323,12 @@ button {
 .notification__menu--header--stores {
   gap: 8px;
   padding: 6px;
-  display: grid;
+  display: flex;
   border-radius: 8px;
   align-self: stretch;
   align-items: center;
-  grid-template-columns: 24px 1fr;
+  justify-content: flex-start;
+  border: 2px solid transparent;
 }
 
 .notification__menu--header--stores svg {
@@ -322,6 +337,7 @@ button {
 }
 
 .notification__menu--header--stores p {
+  margin-top: 3px;
   font-size: 13px;
   font-weight: 400;
   color: var(--grey-g-200);
@@ -341,18 +357,18 @@ button {
   color: var(--grey-g-200);
   border: 2px solid transparent;
   line-height: 140%; /* 18.2px */
-  transition: all 300ms ease-in-out;
+  transition: background-color 300ms ease-in-out;
 }
 
-.notification__menu--header--link:active {
+:is(.notification__menu--header--link, .notification__menu--header--stores):active {
   background: var(--states-pressed);
 }
 
-.notification__menu--header--link:focus {
+:is(.notification__menu--header--link, .notification__menu--header--stores):focus {
   border-color: var(--states-focused);
 }
 
-.notification__menu--header--link:hover {
+:is(.notification__menu--header--link, .notification__menu--header--stores):hover {
   background: var(--states-hover);
 }
 
@@ -768,7 +784,8 @@ progress::-webkit-progress-value {
   gap: 16px;
   flex: 1 0 0;
   display: flex;
-  padding: 2px 0px;
+  padding: 2px 0;
+  margin-top: 2px;
   flex-direction: column;
   align-items: flex-start;
 }
@@ -928,5 +945,41 @@ progress::-webkit-progress-value {
 
   .todo-list__header--task-completion {
     margin-top: 12px;
+  }
+
+  .learn-more {
+    display: inline;
+  }
+
+  .todo-list__section--illustration {
+    display: none;
+  }
+
+  .notification__menu {
+    top: calc(100% + 12px);
+  }
+
+  .notification__alert {
+    left: 50%;
+    width: 92dvw;
+    top: calc(100% + 12px);
+    transform: translateX(-50%);
+  }
+
+  .notification__alert--main {
+    flex: 1 0 0;
+    text-align: center;
+  }
+}
+
+/* ================ MEDIA QUERIES (SMALL PHONES) ================= */
+@media screen and (max-width: 350px) {
+  .notification__menu {
+    left: 0;
+    top: 60px;
+    width: 100dvw;
+    position: fixed;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
 }
