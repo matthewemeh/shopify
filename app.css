@@ -757,9 +757,10 @@ button {
 
   border-radius: 6px;
   background: #404040;
-  border-top: 1.5px solid var(--stroke-light-100);
-  border-left: 1.5px solid var(--stroke-light-100);
-  border-left: 1.5px solid var(--stroke-light-100);
+
+  border-top: 1.5px solid var(--stroke-light-100, rgba(255, 255, 255, 0.2));
+  border-right: 1.5px solid var(--stroke-light-100, rgba(255, 255, 255, 0.2));
+  border-left: 1.5px solid var(--stroke-light-100, rgba(255, 255, 255, 0.2));
   box-shadow: 0 0 0 1.5px #333, 0 1px 0 1.5px #333, 0 2px 0 0 #000;
   transition: var(--default-transition);
 
@@ -775,6 +776,7 @@ button {
 
 .button-1:active {
   background: #2b2b2b;
+  border-color: transparent;
   box-shadow: 0 0 0 1.5px #333, 0 3px 0 0 #000 inset;
 }
 
