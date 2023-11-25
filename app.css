@@ -416,7 +416,6 @@ button {
   border-radius: 8px;
   background: var(--grey-g-200);
   border: 1px solid var(--stroke-s-200);
-  transition: var(--default-transition);
 }
 
 .nav__search input::placeholder {
@@ -432,11 +431,13 @@ button {
   line-height: 140%; /* 18.2px */
 }
 
-.nav__search:hover {
+.nav__search:hover,
+.nav__search:has(input:hover) {
   border: 1px solid var(--stroke-s-100);
 }
 
-.nav__search:is(:active, :focus) {
+.nav__search:is(:active, :focus),
+.nav__search:has(input:is(:active, :focus)) {
   border: 2px solid var(--bg-white);
 }
 
