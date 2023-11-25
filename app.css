@@ -641,10 +641,15 @@ button {
   align-self: stretch;
   align-items: center;
   padding: 4px 12px 4px 8px;
+  border: 2px solid transparent;
   grid-template-columns: 28px 1fr 16px;
 
   border-radius: 8px;
   background: var(--states-hover);
+}
+
+.notification__menu--header--profile:focus {
+  border-color: var(--states-focused);
 }
 
 .notification__menu--header--profile--initials {
@@ -983,6 +988,10 @@ main {
 
 #todo-list__header--arrow:focus {
   border-color: var(--states-focused);
+}
+
+#todo-list__header--arrow > img {
+  pointer-events: none;
 }
 
 .todo-list__header--heading {

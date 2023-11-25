@@ -1,5 +1,3 @@
-const NUMBER_OF_STAGES = 5;
-
 const closeAlert = () => {
   const alert = document.querySelector('.alert');
   alert.classList.add('hidden');
@@ -7,13 +5,25 @@ const closeAlert = () => {
 
 const openSetupTasks = () => {
   // expand tasks...
+
   const setupTasksContainer = document.querySelector('.todo-list');
   const isSetupTasksExpanded = setupTasksContainer.style.maxHeight === '2000px';
 
+  const todoListSection = document.querySelector('.todo-list__sections');
+  const arrowButton = document.querySelector('#todo-list__header--arrow');
+
   if (isSetupTasksExpanded) {
     setupTasksContainer.style.maxHeight = '140px';
+    todoListSection.classList.add('hidden');
+
+    arrowButton.setAttribute('aria-expanded', 'false');
+    arrowButton.setAttribute('aria-label', 'open setup tasks');
   } else {
+    todoListSection.classList.remove('hidden');
     setupTasksContainer.style.maxHeight = '2000px';
+
+    arrowButton.setAttribute('aria-expanded', 'true');
+    arrowButton.setAttribute('aria-label', 'close setup tasks');
   }
 
   //...then rotate arrow icon
@@ -22,11 +32,15 @@ const openSetupTasks = () => {
 };
 
 const closeAllTasks = setupTasks => {
-  setupTasks.forEach(setupTask => {
+  setupTasks.forEach((setupTask, index) => {
     if (setupTask.classList.contains('active')) {
       setupTask.classList.add('inactive');
       setupTask.classList.remove('active');
     }
+
+    // ...then update aria expanded
+    const currentButton = document.querySelectorAll('.todo-list__section--heading')[index];
+    currentButton.setAttribute('aria-expanded', 'false');
   });
 };
 
@@ -36,9 +50,13 @@ const openSetupTask = taskIndex => {
 
   closeAllTasks(setupTasks);
 
-  // ...then open clicked task
+  // open clicked task...
   clickedTask.classList.add('active');
   clickedTask.classList.remove('inactive');
+
+  // ...then update aria expanded
+  const currentButton = document.querySelectorAll('.todo-list__section--heading')[taskIndex];
+  currentButton.setAttribute('aria-expanded', 'true');
 };
 
 const getCompletedTasks = () => {
@@ -57,13 +75,22 @@ const getCompletedTasks = () => {
 
 const updateProgress = () => {
   const setupTasks = document.querySelectorAll('.todo-list__section--indicators');
+  const numberOfTasks = setupTasks.length;
+  const completedTasks = getCompletedTasks();
 
   // update progress...
   const progressText = document.querySelector('.todo-list__header--task-completion p');
-  progressText.innerText = `${getCompletedTasks().toString()} / ${setupTasks.length} completed`;
+  progressText.innerText = `${completedTasks.toString()} / ${numberOfTasks} completed`;
 
   const progressBar = document.querySelector('#tasks-completion');
-  progressBar.value = `${(getCompletedTasks() / setupTasks.length) * 100}`;
+  progressBar.value = `${(completedTasks / numberOfTasks) * 100}`;
+
+  // ...then update progress aria text
+  const progressAriaText = document.querySelector('#progress-text');
+  progressAriaText.setAttribute(
+    'aria-label',
+    `${completedTasks} out of ${numberOfTasks} steps completed`
+  );
 };
 
 const onUncheck = taskIndex => {
@@ -138,18 +165,80 @@ const toggleOverlay = () => {
   hideOverlay();
 };
 
-const toggleNotificationAlerts = () => {
+const toggleAriaExpanded = element => {
+  if (element.getAttribute('aria-expanded') === 'true') {
+    element.setAttribute('aria-expanded', 'false');
+  } else if (element.getAttribute('aria-expanded') === 'false') {
+    element.setAttribute('aria-expanded', 'true');
+  }
+};
+
+const toggleNotificationAlerts = event => {
   const alertDiv = document.querySelector('.notification__alert');
   alertDiv.classList.toggle('active');
+
+  const notificationBell = event.currentTarget;
+  toggleAriaExpanded(notificationBell);
 
   closeAllPopups('notification__alert');
   toggleOverlay();
 };
 
-const toggleNotificationMenu = () => {
+const toggleNotificationMenu = event => {
   const menu = document.querySelector('.notification__menu');
   menu.classList.toggle('active');
 
+  const profileButton = event.currentTarget;
+  toggleAriaExpanded(profileButton);
+
   closeAllPopups('notification__menu');
   toggleOverlay();
+};
+
+const highlightFirstMenuItem = menuContainerID => {
+  const menuItemIdentifier = `#${menuContainerID} [role=menuitem]`;
+  const menuItems = document.querySelectorAll(menuItemIdentifier);
+
+  menuItems[0].focus();
+};
+
+const highlightItem = itemID => {
+  const itemIdentifier = `#${itemID}`;
+  const item = document.querySelector(itemIdentifier);
+
+  item.focus();
+};
+
+window.onload = () => {
+  const menuItemIdentifier = `#notification-menu [role=menuitem]`;
+  const notificationMenuItems = document.querySelectorAll(menuItemIdentifier);
+
+  notificationMenuItems.forEach((menuItem, index) => {
+    menuItem.addEventListener(
+      'keydown',
+      event => {
+        const name = event.key;
+
+        if (name === 'ArrowDown' || name === 'ArrowRight') {
+          const nextMenuItem = notificationMenuItems[index + 1];
+
+          if (nextMenuItem) {
+            nextMenuItem.focus();
+          } else {
+            notificationMenuItems[0].focus();
+          }
+        } else if (name === 'ArrowUp' || name === 'ArrowLeft') {
+          const previousMenuItem = notificationMenuItems[index - 1];
+
+          if (previousMenuItem) {
+            previousMenuItem.focus();
+          } else {
+            const lastIndex = notificationMenuItems.length - 1;
+            notificationMenuItems[lastIndex].focus();
+          }
+        }
+      },
+      false
+    );
+  });
 };

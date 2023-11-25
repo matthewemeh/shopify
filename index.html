@@ -36,7 +36,13 @@
 
   <body>
     <nav>
-      <a class="nav__logo" href="https://shopify.com" target="_blank" rel="noopener noreferrer">
+      <a
+        target="_blank"
+        class="nav__logo"
+        aria-label="shopify logo"
+        href="https://shopify.com"
+        rel="noopener noreferrer"
+      >
         <img
           alt="shopify logo"
           id="nav__logo--desktop"
@@ -49,7 +55,7 @@
         />
       </a>
 
-      <div class="nav__search" role="form">
+      <div class="nav__search" aria-label="search bar">
         <svg
           width="20"
           height="20"
@@ -70,9 +76,12 @@
       <div class="notification">
         <button
           aria-haspopup="true"
+          aria-expanded="false"
+          id="notification-bell"
           class="notification__bell"
+          aria-label="notification-bell"
           aria-controls="notification-alert"
-          onclick="toggleNotificationAlerts()"
+          onclick="toggleNotificationAlerts(event);highlightItem('filter-alerts');"
         >
           <svg
             width="20"
@@ -91,21 +100,28 @@
         </button>
 
         <button
-          aria-haspopup="menu"
+          id="profile"
+          aria-label="profile"
+          aria-haspopup="true"
+          aria-expanded="false"
           class="notification__content"
           aria-controls="notification-menu"
-          onclick="toggleNotificationMenu()"
+          onclick="toggleNotificationMenu(event);highlightFirstMenuItem('notification-menu');"
         >
           <p class="notification__content--username">Davii Collections</p>
           <div class="notification__content--initials">DC</div>
         </button>
       </div>
 
-      <div id="notification-alert" class="notification__alert popup">
-        <div class="notification__alert--header">
+      <div
+        id="notification-alert"
+        class="notification__alert popup"
+        aria-labelledby="notification-bell"
+      >
+        <div class="notification__alert--header" aria-label="alerts">
           <p class="notification__alert--header--text">Alerts</p>
           <div class="notification__alert--header--buttons">
-            <button>
+            <button id="filter-alerts" tabindex="0" aria-label="filter alerts">
               <svg
                 width="20"
                 height="20"
@@ -128,7 +144,7 @@
               </svg>
             </button>
 
-            <button>
+            <button id="mark-alerts" aria-label="mark all alerts as read">
               <svg
                 width="20"
                 height="20"
@@ -151,14 +167,21 @@
           </div>
         </div>
 
-        <div class="notification__alert--main">
-          Alerts about your store and account will show here
-        </div>
+        <ul class="notification__alert--main" aria-label="list of alerts">
+          <li role="listitem">
+            <p>Alerts about your store and account will show here</p>
+          </li>
+        </ul>
       </div>
 
-      <div id="notification-menu" class="notification__menu popup">
+      <div
+        role="menu"
+        id="notification-menu"
+        aria-labelledby="profile"
+        class="notification__menu popup"
+      >
         <div class="notification__menu--header">
-          <button class="notification__menu--header--profile">
+          <button class="notification__menu--header--profile" tabindex="0" role="menuitem">
             <div class="notification__menu--header--profile--initials">DC</div>
             <p class="notification__menu--header--profile--username">Davii Collections</p>
             <svg
@@ -179,8 +202,10 @@
           </button>
           <a
             target="_blank"
+            role="menuitem"
             rel="noopener noreferrer"
             href="https://admin.shopify.com"
+            aria-label="Check out all stores"
             class="notification__menu--header--stores"
           >
             <svg
@@ -204,39 +229,49 @@
         <div class="notification__menu--main">
           <a
             target="_blank"
+            role="menuitem"
             rel="noopener noreferrer"
             href="https://admin.shopify.com"
+            aria-label="Visit our Help Center"
             class="notification__menu--header--link"
           >
             Help Center
           </a>
           <a
             target="_blank"
+            role="menuitem"
             rel="noopener noreferrer"
             href="https://admin.shopify.com"
+            aria-label="Check out our change log"
             class="notification__menu--header--link"
           >
             Changelog
           </a>
           <a
             target="_blank"
+            role="menuitem"
             rel="noopener noreferrer"
             href="https://admin.shopify.com"
+            aria-label="Join our Community forums"
             class="notification__menu--header--link"
           >
             Community forums
           </a>
           <a
             target="_blank"
+            role="menuitem"
             rel="noopener noreferrer"
             href="https://admin.shopify.com"
+            aria-label="Hire a Shopify Partner"
             class="notification__menu--header--link"
           >
             Hire a Shopify Partner
           </a>
           <a
             target="_blank"
+            role="menuitem"
             rel="noopener noreferrer"
+            aria-label="Keyboard shortcuts"
             href="https://admin.shopify.com"
             class="notification__menu--header--link"
           >
@@ -247,17 +282,21 @@
         <div class="notification__menu--footer">
           <a
             target="_blank"
+            role="menuitem"
             id="profile-link"
             rel="noopener noreferrer"
             href="https://admin.shopify.com"
             class="notification__menu--header--link"
+            aria-label="Your Fullname, David Micheal and email, davidmicheal@gmail.com"
           >
             <span class="fullname">David Micheal</span>
             <span class="email">davidmicheal@gmail.com</span>
           </a>
           <a
             target="_blank"
+            role="menuitem"
             rel="noopener noreferrer"
+            aria-label="Manage your account"
             href="https://admin.shopify.com"
             class="notification__menu--header--link"
           >
@@ -265,6 +304,8 @@
           </a>
           <a
             target="_blank"
+            role="menuitem"
+            aria-label="Log out"
             rel="noopener noreferrer"
             href="https://admin.shopify.com"
             class="notification__menu--header--link"
@@ -280,8 +321,14 @@
 
       <div class="alert">
         <p class="alert__message">
-          Extend your trial for $1/month for 3 months on select plans.
-          <button class="alert__close mobile" onclick="closeAlert()">
+          <span aria-label="Extend your trial for 1 dollar a month for 3 months on select plans.">
+            Extend your trial for $1/month for 3 months on select plans.
+          </span>
+          <button
+            onclick="closeAlert()"
+            class="alert__close mobile"
+            aria-label="dismiss trial option"
+          >
             <svg
               width="20"
               height="20"
@@ -306,7 +353,11 @@
             >Select a plan</a
           >
 
-          <button class="alert__close desktop" onclick="closeAlert()">
+          <button
+            onclick="closeAlert()"
+            class="alert__close desktop"
+            aria-label="dismiss trial option"
+          >
             <svg
               width="20"
               height="20"
@@ -331,12 +382,18 @@
               Use this personalized guide to get your store up and running.
             </p>
             <div class="todo-list__header--task-completion">
-              <p>0 / 5 completed</p>
-              <progress id="tasks-completion" value="0" max="100"></progress>
+              <p id="progress-text" aria-label="0 out of 5 steps completed">0 / 5 completed</p>
+              <progress id="tasks-completion" value="0" max="100" role="progressbar"></progress>
             </div>
           </div>
 
-          <button id="todo-list__header--arrow" onclick="openSetupTasks()">
+          <button
+            aria-expanded="false"
+            onclick="openSetupTasks()"
+            id="todo-list__header--arrow"
+            aria-label="open setup tasks"
+            aria-controls="todo-list-sections"
+          >
             <img
               alt="icon arrow down"
               src="https://crushingit.tech/hackathon-assets/icon-arrow-down.svg"
@@ -344,10 +401,14 @@
           </button>
         </header>
 
-        <div class="todo-list__sections">
+        <div
+          id="todo-list-sections"
+          class="todo-list__sections hidden"
+          aria-labelledby="todo-list__header--arrow"
+        >
           <section class="todo-list__section inactive">
             <div class="todo-list__section--content">
-              <button class="todo-list__section--indicators">
+              <button aria-label="customize store" class="todo-list__section--indicators">
                 <svg
                   width="24"
                   height="24"
@@ -393,11 +454,16 @@
               </button>
 
               <div class="todo-list__section--content--text">
-                <button class="todo-list__section--heading" onclick="openSetupTask(0)">
+                <button
+                  aria-expanded="false"
+                  onclick="openSetupTask(0)"
+                  class="todo-list__section--heading"
+                >
                   Customize your online store
                 </button>
                 <p class="todo-list__section--subheading">
                   Choose a theme and add your logo, colors, and images to reflect your brand.<a
+                    role="link"
                     target="_blank"
                     class="learn-more"
                     rel="noopener noreferrer"
@@ -420,7 +486,7 @@
 
           <section class="todo-list__section inactive">
             <div class="todo-list__section--content">
-              <button class="todo-list__section--indicators">
+              <button aria-label="add product" class="todo-list__section--indicators">
                 <svg
                   width="24"
                   height="24"
@@ -466,12 +532,17 @@
               </button>
 
               <div class="todo-list__section--content--text">
-                <button class="todo-list__section--heading" onclick="openSetupTask(1)">
+                <button
+                  aria-expanded="false"
+                  onclick="openSetupTask(1)"
+                  class="todo-list__section--heading"
+                >
                   Add your first product
                 </button>
                 <p class="todo-list__section--subheading">
                   Write a description, add photos, and set pricing for the products you plan to
                   sell.<a
+                    role="link"
                     target="_blank"
                     class="learn-more"
                     rel="noopener noreferrer"
@@ -495,7 +566,7 @@
 
           <section class="todo-list__section inactive">
             <div class="todo-list__section--content">
-              <button class="todo-list__section--indicators">
+              <button aria-label="add domain" class="todo-list__section--indicators">
                 <svg
                   width="24"
                   height="24"
@@ -541,12 +612,17 @@
               </button>
 
               <div class="todo-list__section--content--text">
-                <button class="todo-list__section--heading" onclick="openSetupTask(2)">
+                <button
+                  aria-expanded="false"
+                  onclick="openSetupTask(2)"
+                  class="todo-list__section--heading"
+                >
                   Add a custom domain
                 </button>
                 <p class="todo-list__section--subheading">
                   Your current domain is 222219.myshopify.com but you can add a custom domain to
                   help customers find your online store.<a
+                    role="link"
                     target="_blank"
                     class="learn-more"
                     rel="noopener noreferrer"
@@ -569,7 +645,7 @@
 
           <section class="todo-list__section inactive">
             <div class="todo-list__section--content">
-              <button class="todo-list__section--indicators">
+              <button aria-label="name store" class="todo-list__section--indicators">
                 <svg
                   width="24"
                   height="24"
@@ -615,12 +691,17 @@
               </button>
 
               <div class="todo-list__section--content--text">
-                <button class="todo-list__section--heading" onclick="openSetupTask(3)">
+                <button
+                  aria-expanded="false"
+                  onclick="openSetupTask(3)"
+                  class="todo-list__section--heading"
+                >
                   Name your store
                 </button>
                 <p class="todo-list__section--subheading">
                   Your temporary store name is currently Davii collections. The store name appears
                   in your admin and your online store.<a
+                    role="link"
                     target="_blank"
                     class="learn-more"
                     rel="noopener noreferrer"
@@ -643,7 +724,7 @@
 
           <section class="todo-list__section inactive">
             <div class="todo-list__section--content">
-              <button class="todo-list__section--indicators">
+              <button aria-label="set payment" class="todo-list__section--indicators">
                 <svg
                   width="24"
                   height="24"
@@ -689,12 +770,17 @@
               </button>
 
               <div class="todo-list__section--content--text">
-                <button class="todo-list__section--heading" onclick="openSetupTask(4)">
+                <button
+                  aria-expanded="false"
+                  onclick="openSetupTask(4)"
+                  class="todo-list__section--heading"
+                >
                   Set up a payment provider
                 </button>
                 <p class="todo-list__section--subheading">
                   Choose a payment provider to start accepting payments. You'll need to create an
                   account with the payment provider and set it up with your Shopify store.<a
+                    role="link"
                     target="_blank"
                     class="learn-more"
                     rel="noopener noreferrer"
