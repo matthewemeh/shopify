@@ -780,7 +780,7 @@ button {
 
 .button-1:focus {
   background: #404040;
-  box-shadow: 0 0 0 5px var(--states-focused), 0 0 0 3px #fff, 0 0 0 1.5px #333;
+  box-shadow: 0 0 0 1.5px #333, 0 0 0 3px #fff, 0 0 0 5px var(--states-focused);
 }
 
 /* button-2 */
@@ -816,7 +816,7 @@ button {
 .button-2:focus {
   background: var(--bg-white);
   border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 0 3px var(--states-focused), 0 0 0 1px #fff, 0 -1px 0 0 #b5b5b5 inset;
+  box-shadow: 0 0 0 1px #fff, 0 0 0 3px var(--states-focused), 0 -1px 0 0 #b5b5b5 inset;
 }
 
 /* button-3 */
@@ -828,6 +828,7 @@ button {
   display: inline-flex;
 
   border-radius: 6px;
+  border: 2px solid transparent;
   transition: var(--default-transition);
 
   font-size: 12px;
@@ -846,7 +847,7 @@ button {
 
 .button-3:focus {
   background: #fff;
-  border: 2px solid var(--states-focused);
+  border-color: var(--states-focused);
 }
 
 nav {
