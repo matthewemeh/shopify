@@ -39,11 +39,15 @@
 
 button {
   cursor: pointer;
+  background-color: transparent;
+}
+
+.nav__logo {
+  border: 2px solid transparent;
 }
 
 .nav__logo:focus {
-  outline: none;
-  border: 2px solid var(--states-focused);
+  border-color: var(--states-focused);
 }
 
 /* search */
@@ -75,11 +79,11 @@ button {
   line-height: 140%; /* 18.2px */
 }
 
-.nav__search input:hover {
+.nav__search:hover {
   border: 1px solid var(--stroke-s-100);
 }
 
-.nav__search input:is(:active, :focus) {
+.nav__search:is(:active, :focus) {
   border: 2px solid var(--bg-white);
 }
 
@@ -336,6 +340,7 @@ button {
   font-size: 13px;
   font-weight: 400;
   color: var(--grey-g-200);
+  border: 2px solid transparent;
   line-height: 140%; /* 18.2px */
   transition: all 300ms ease-in-out;
 }
@@ -345,8 +350,7 @@ button {
 }
 
 .notification__menu--header--link:focus {
-  outline: none;
-  border: 2px solid var(--states-focused);
+  border-color: var(--states-focused);
 }
 
 .notification__menu--header--link:hover {
@@ -406,7 +410,6 @@ button {
 }
 
 .button-1:focus {
-  outline: none;
   background: #404040;
   box-shadow: 0 0 0 5px var(--states-focused), 0 0 0 3px #fff, 0 0 0 1.5px #333;
 }
@@ -537,11 +540,11 @@ main {
 .alert__close {
   cursor: pointer;
   background: transparent;
+  border: 2px solid transparent;
 }
 
 .alert__close:focus {
-  outline: none;
-  border: 2px solid var(--states-focused);
+  border-color: var(--states-focused);
 }
 
 /* todo-list */
@@ -550,7 +553,13 @@ main {
   font-size: 14px;
   font-weight: 500;
   line-height: 140%;
+  width: max-content;
   color: var(--states-focused);
+  border: 2px solid transparent;
+}
+
+.learn-more:focus {
+  border-color: var(--states-focused);
 }
 
 .todo-list {
@@ -586,7 +595,11 @@ main {
 
 #todo-list__header--arrow {
   cursor: pointer;
-  transition: all 200ms ease-in-out;
+  border: 2px solid transparent;
+}
+
+#todo-list__header--arrow:focus {
+  border-color: var(--states-focused);
 }
 
 .todo-list__header--heading {
@@ -687,12 +700,11 @@ progress::-webkit-progress-value {
   width: 24px;
   height: 24px;
   position: relative;
-  background-color: transparent;
+  border: 2px solid transparent;
 }
 
 .todo-list__section--indicators:focus {
-  outline: none;
-  border: 2px solid var(--states-focused);
+  border-color: var(--states-focused);
 }
 
 .todo-list__section--content--tick,
