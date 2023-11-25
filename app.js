@@ -43,11 +43,11 @@ const openSetupTask = taskIndex => {
 
 const getCompletedTasks = () => {
   let completedTasks = 0;
-  const ticks = document.querySelectorAll('.todo-list__section--content--tick');
+  const indicators = document.querySelectorAll('.todo-list__section--indicators');
 
-  for (let i = 0; i < ticks.length; i++) {
-    const currentTick = ticks[i];
-    if (currentTick.classList.contains('active')) {
+  for (let i = 0; i < indicators.length; i++) {
+    const currentIndicator = indicators[i];
+    if (currentIndicator.classList.contains('checked')) {
       completedTasks += 1;
     }
   }
@@ -56,7 +56,7 @@ const getCompletedTasks = () => {
 };
 
 const updateProgress = () => {
-  const setupTasks = document.querySelectorAll('.todo-list__section');
+  const setupTasks = document.querySelectorAll('.todo-list__section--indicators');
 
   // update progress...
   const progressText = document.querySelector('.todo-list__header--task-completion p');
@@ -102,12 +102,16 @@ const onCheck = taskIndex => {
   }, 1000);
 };
 
-const closeAllPopups = () => {
+const closeAllPopups = (exceptClass = '') => {
   const popups = document.querySelectorAll('.popup');
 
   popups.forEach(popup => {
-    popup.classList.remove('active');
+    if (!popup.classList.contains(exceptClass)) {
+      popup.classList.remove('active');
+    }
   });
+
+  hideOverlay();
 };
 
 const showOverlay = () => {
@@ -121,56 +125,31 @@ const hideOverlay = () => {
 };
 
 const toggleOverlay = () => {
-  const overlay = document.querySelector('.overlay');
-  overlay?.classList?.toggle('active');
+  // check for any open popups and then show overlay
+  const popups = document.querySelectorAll('.popup');
+
+  for (let i = 0; i < popups.length; i++) {
+    if (popups[i].classList.contains('active')) {
+      showOverlay();
+      return;
+    }
+  }
+
+  hideOverlay();
 };
 
 const toggleNotificationAlerts = () => {
-  closeAllPopups();
-
   const alertDiv = document.querySelector('.notification__alert');
   alertDiv.classList.toggle('active');
 
+  closeAllPopups('notification__alert');
   toggleOverlay();
-};
-
-const openNotificationAlerts = () => {
-  closeAllPopups();
-
-  const alertDiv = document.querySelector('.notification__alert');
-  alertDiv.classList.add('active');
-
-  showOverlay();
-};
-
-const closeNotificationAlerts = () => {
-  const alertDiv = document.querySelector('.notification__alert');
-  alertDiv.classList.remove('active');
-
-  hideOverlay();
 };
 
 const toggleNotificationMenu = () => {
-  closeAllPopups();
-
   const menu = document.querySelector('.notification__menu');
   menu.classList.toggle('active');
 
+  closeAllPopups('notification__menu');
   toggleOverlay();
-};
-
-const openNotificationMenu = () => {
-  closeAllPopups();
-
-  const menu = document.querySelector('.notification__menu');
-  menu.classList.add('active');
-
-  showOverlay();
-};
-
-const closeNotificationMenu = () => {
-  const menu = document.querySelector('.notification__menu');
-  menu.classList.remove('active');
-
-  hideOverlay();
 };

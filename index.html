@@ -39,7 +39,13 @@
       <a class="nav__logo" href="https://shopify.com" target="_blank" rel="noopener noreferrer">
         <img
           alt="shopify logo"
+          id="nav__logo--desktop"
           src="https://crushingit.tech/hackathon-assets/shopify-icon-desktop.svg"
+        />
+        <img
+          alt="shopify logo"
+          id="nav__logo--mobile"
+          src="https://crushingit.tech/hackathon-assets/shopify-icon.svg"
         />
       </a>
 
@@ -52,10 +58,10 @@
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
+            fill="#B5B5B5"
             fill-rule="evenodd"
             clip-rule="evenodd"
             d="M12.3226 13.3833C11.3996 14.0841 10.2484 14.5 9 14.5C5.96243 14.5 3.5 12.0376 3.5 9C3.5 5.96243 5.96243 3.5 9 3.5C12.0376 3.5 14.5 5.96243 14.5 9C14.5 10.2484 14.0841 11.3996 13.3833 12.3226L16.2803 15.2197C16.5732 15.5126 16.5732 15.9874 16.2803 16.2803C15.9874 16.5732 15.5126 16.5732 15.2197 16.2803L12.3226 13.3833ZM13 9C13 11.2091 11.2091 13 9 13C6.79086 13 5 11.2091 5 9C5 6.79086 6.79086 5 9 5C11.2091 5 13 6.79086 13 9Z"
-            fill="#B5B5B5"
           />
         </svg>
         <input type="text" placeholder="Search" />
@@ -256,11 +262,26 @@
     </nav>
 
     <main>
-      <!-- <div class="overlay" onclick="closeNotificationAlerts()"></div> -->
-      <!-- <div class="overlay" onclick="closeNotificationMenu()"></div> -->
+      <div class="overlay" onclick="closeAllPopups()"></div>
 
       <div class="alert">
-        <p class="alert__message">Extend your trial for $1/month for 3 months on select plans.</p>
+        <p class="alert__message">
+          Extend your trial for $1/month for 3 months on select plans.
+          <button class="alert__close mobile" onclick="closeAlert()">
+            <svg
+              width="20"
+              height="20"
+              fill="none"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill="#E3E3E3"
+                d="M13.9697 15.0303C14.2626 15.3232 14.7374 15.3232 15.0303 15.0303C15.3232 14.7374 15.3232 14.2626 15.0303 13.9697L11.0607 10L15.0303 6.03033C15.3232 5.73744 15.3232 5.26256 15.0303 4.96967C14.7374 4.67678 14.2626 4.67678 13.9697 4.96967L10 8.93934L6.03033 4.96967C5.73744 4.67678 5.26256 4.67678 4.96967 4.96967C4.67678 5.26256 4.67678 5.73744 4.96967 6.03033L8.93934 10L4.96967 13.9697C4.67678 14.2626 4.67678 14.7374 4.96967 15.0303C5.26256 15.3232 5.73744 15.3232 6.03033 15.0303L10 11.0607L13.9697 15.0303Z"
+              />
+            </svg>
+          </button>
+        </p>
 
         <div class="alert__options">
           <a
@@ -271,7 +292,7 @@
             >Select a plan</a
           >
 
-          <button class="alert__close" onclick="closeAlert()">
+          <button class="alert__close desktop" onclick="closeAlert()">
             <svg
               width="20"
               height="20"
