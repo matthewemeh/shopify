@@ -11,7 +11,7 @@ const openSetupTasks = () => {
   const isSetupTasksExpanded = setupTasksContainer.style.maxHeight === '2000px';
 
   if (isSetupTasksExpanded) {
-    setupTasksContainer.style.maxHeight = '120px';
+    setupTasksContainer.style.maxHeight = '140px';
   } else {
     setupTasksContainer.style.maxHeight = '2000px';
   }
