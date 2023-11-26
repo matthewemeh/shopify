@@ -1271,7 +1271,6 @@ progress::-webkit-progress-value {
     flex: 1 0 0;
     margin-bottom: 28px;
     align-items: flex-end;
-    width: 100dvw;
   }
 
   #nav__logo--desktop {
@@ -1353,7 +1352,7 @@ progress::-webkit-progress-value {
 
   .notification__alert {
     left: 50%;
-    width: 92dvw;
+    width: 92vw;
     top: calc(100% + 12px);
     transform: translateX(-50%);
   }
