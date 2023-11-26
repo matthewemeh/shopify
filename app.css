@@ -1145,7 +1145,7 @@ progress::-webkit-progress-value {
   opacity: 1;
   cursor: pointer;
   visibility: visible;
-  animation: checked 200ms ease-in;
+  animation: checked 300ms linear;
 }
 
 .todo-list__section--indicators.loading .todo-list__section--content--spinner {
@@ -1230,14 +1230,12 @@ progress::-webkit-progress-value {
 
 @keyframes checked {
   from {
-    opacity: 0.6;
-    rotate: -58.259deg;
-    transform: scale(0.583);
+    opacity: 0;
+    transform: scale(0) rotate(270deg);
   }
   to {
     opacity: 1;
-    rotate: 0deg;
-    transform: scale(1);
+    transform: scale(1) rotate(360deg);
   }
 }
 

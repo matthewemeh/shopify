@@ -132,7 +132,7 @@ const onCheck = taskIndex => {
         break;
       }
     }
-  }, 1000);
+  }, 1500);
 };
 
 const closeAllPopups = (exceptClass = '') => {
