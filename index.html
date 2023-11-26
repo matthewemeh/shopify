@@ -408,15 +408,20 @@
         >
           <section class="todo-list__section active">
             <div class="todo-list__section--content">
-              <button aria-label="customize store" class="todo-list__section--indicators">
+              <span class="indicator-status" aria-live="polite"></span>
+              <button
+                class="todo-list__section--indicators"
+                aria-label="Mark customize your online store as done"
+              >
                 <svg
                   width="24"
                   height="24"
                   fill="none"
+                  aria-hidden="true"
                   viewBox="0 0 24 24"
-                  onclick="onCheck(0)"
                   xmlns="http://www.w3.org/2000/svg"
                   class="todo-list__section--content--checkmark"
+                  onclick="onCheck(0, 'customize your online store')"
                 >
                   <circle
                     cx="12"
@@ -433,6 +438,7 @@
                   width="24"
                   height="24"
                   fill="none"
+                  aria-hidden="true"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                   class="todo-list__section--content--spinner"
@@ -447,8 +453,9 @@
                 </svg>
                 <img
                   alt=""
-                  onclick="onUncheck(0)"
+                  aria-hidden="true"
                   class="todo-list__section--content--tick"
+                  onclick="onUncheck(0, 'customize your online store')"
                   src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
                 />
               </button>
@@ -486,15 +493,20 @@
 
           <section class="todo-list__section inactive">
             <div class="todo-list__section--content">
-              <button aria-label="add product" class="todo-list__section--indicators">
+              <span class="indicator-status" aria-live="polite"></span>
+              <button
+                class="todo-list__section--indicators"
+                aria-label="Mark add your first product as done"
+              >
                 <svg
                   width="24"
                   height="24"
                   fill="none"
+                  aria-hidden="true"
                   viewBox="0 0 24 24"
-                  onclick="onCheck(1)"
                   xmlns="http://www.w3.org/2000/svg"
                   class="todo-list__section--content--checkmark"
+                  onclick="onCheck(1, 'add your first product')"
                 >
                   <circle
                     cx="12"
@@ -511,6 +523,7 @@
                   width="24"
                   height="24"
                   fill="none"
+                  aria-hidden="true"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                   class="todo-list__section--content--spinner"
@@ -525,8 +538,9 @@
                 </svg>
                 <img
                   alt=""
-                  onclick="onUncheck(1)"
+                  aria-hidden="true"
                   class="todo-list__section--content--tick"
+                  onclick="onUncheck(1,'add your first product')"
                   src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
                 />
               </button>
@@ -566,14 +580,19 @@
 
           <section class="todo-list__section inactive">
             <div class="todo-list__section--content">
-              <button aria-label="add domain" class="todo-list__section--indicators">
+              <span class="indicator-status" aria-live="polite"></span>
+              <button
+                class="todo-list__section--indicators"
+                aria-label="Mark add a custom domain as done"
+              >
                 <svg
                   width="24"
                   height="24"
                   fill="none"
+                  aria-hidden="true"
                   viewBox="0 0 24 24"
-                  onclick="onCheck(2)"
                   xmlns="http://www.w3.org/2000/svg"
+                  onclick="onCheck(2, 'add a custom domain')"
                   class="todo-list__section--content--checkmark"
                 >
                   <circle
@@ -591,6 +610,7 @@
                   width="24"
                   height="24"
                   fill="none"
+                  aria-hidden="true"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                   class="todo-list__section--content--spinner"
@@ -605,8 +625,9 @@
                 </svg>
                 <img
                   alt=""
-                  onclick="onUncheck(2)"
+                  aria-hidden="true"
                   class="todo-list__section--content--tick"
+                  onclick="onUncheck(2,'add a custom domain')"
                   src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
                 />
               </button>
@@ -645,14 +666,19 @@
 
           <section class="todo-list__section inactive">
             <div class="todo-list__section--content">
-              <button aria-label="name store" class="todo-list__section--indicators">
+              <span class="indicator-status" aria-live="polite"></span>
+              <button
+                class="todo-list__section--indicators"
+                aria-label="Mark name your store as done"
+              >
                 <svg
                   width="24"
                   height="24"
                   fill="none"
+                  aria-hidden="true"
                   viewBox="0 0 24 24"
-                  onclick="onCheck(3)"
                   xmlns="http://www.w3.org/2000/svg"
+                  onclick="onCheck(3, 'name your store')"
                   class="todo-list__section--content--checkmark"
                 >
                   <circle
@@ -670,6 +696,7 @@
                   width="24"
                   height="24"
                   fill="none"
+                  aria-hidden="true"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                   class="todo-list__section--content--spinner"
@@ -684,7 +711,8 @@
                 </svg>
                 <img
                   alt=""
-                  onclick="onUncheck(3)"
+                  aria-hidden="true"
+                  onclick="onUncheck(3,'name your store')"
                   class="todo-list__section--content--tick"
                   src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
                 />
@@ -724,15 +752,20 @@
 
           <section class="todo-list__section inactive">
             <div class="todo-list__section--content">
-              <button aria-label="set payment" class="todo-list__section--indicators">
+              <span class="indicator-status" aria-live="polite"></span>
+              <button
+                class="todo-list__section--indicators"
+                aria-label="Mark set up a payment provider as done"
+              >
                 <svg
                   width="24"
                   height="24"
                   fill="none"
+                  aria-hidden="true"
                   viewBox="0 0 24 24"
-                  onclick="onCheck(4)"
                   xmlns="http://www.w3.org/2000/svg"
                   class="todo-list__section--content--checkmark"
+                  onclick="onCheck(4, 'set up a payment provider')"
                 >
                   <circle
                     cx="12"
@@ -749,6 +782,7 @@
                   width="24"
                   height="24"
                   fill="none"
+                  aria-hidden="true"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                   class="todo-list__section--content--spinner"
@@ -763,8 +797,9 @@
                 </svg>
                 <img
                   alt=""
-                  onclick="onUncheck(4)"
+                  aria-hidden="true"
                   class="todo-list__section--content--tick"
+                  onclick="onUncheck(4, 'set up a payment provider')"
                   src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
                 />
               </button>

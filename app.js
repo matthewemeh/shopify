@@ -108,12 +108,17 @@ const moveToNextIncompleteTask = indicators => {
   }
 };
 
-const onUncheck = taskIndex => {
+const onUncheck = (taskIndex, taskName = 'checkbox item') => {
   const indicators = document.querySelectorAll('.todo-list__section--indicators');
   const currentIndicator = indicators[taskIndex];
 
   currentIndicator.classList.remove(CHECKED_CLASS);
   currentIndicator.classList.add(LOADING_CLASS);
+
+  // update checkbox status...
+  const indicatorStatus = document.querySelectorAll('.indicator-status');
+  const currentIndicatorStatus = indicatorStatus[taskIndex];
+  currentIndicatorStatus.ariaLabel = 'Loading. Please wait...';
 
   // ...then uncheck the checkbox after a few seconds
   setTimeout(() => {
@@ -123,15 +128,23 @@ const onUncheck = taskIndex => {
     closeAllTasks(setupTasks);
     updateProgress();
     moveToNextIncompleteTask(indicators);
+
+    currentIndicatorStatus.ariaLabel = `Successfully marked ${taskName} as not done`;
+    currentIndicator.ariaLabel = currentIndicator.ariaLabel.replace('as not done', 'as done');
   }, 1500);
 };
 
-const onCheck = taskIndex => {
+const onCheck = (taskIndex, taskName = 'checkbox item') => {
   const indicators = document.querySelectorAll('.todo-list__section--indicators');
   const currentIndicator = indicators[taskIndex];
 
   // initiate loading animation...
   currentIndicator.classList.add(LOADING_CLASS);
+
+  // ...update checkbox status...
+  const indicatorStatus = document.querySelectorAll('.indicator-status');
+  const currentIndicatorStatus = indicatorStatus[taskIndex];
+  currentIndicatorStatus.ariaLabel = 'Loading. Please wait...';
 
   // ...then check the checkbox after a few seconds
   setTimeout(() => {
@@ -142,6 +155,9 @@ const onCheck = taskIndex => {
     closeAllTasks(setupTasks);
     updateProgress();
     moveToNextIncompleteTask(indicators);
+
+    currentIndicatorStatus.ariaLabel = `Successfully marked ${taskName} as done`;
+    currentIndicator.ariaLabel = currentIndicator.ariaLabel.replace('as done', 'as not done');
   }, 1500);
 };
 
