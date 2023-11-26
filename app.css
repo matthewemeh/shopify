@@ -54,7 +54,6 @@ main {
 
 h1 {
   font-size: 2em;
-  margin: 0.67em 0;
 }
 
 /* Grouping content
@@ -396,11 +395,11 @@ button {
 }
 
 .nav__logo {
-  border: 2px solid transparent;
+  outline: 2px solid transparent;
 }
 
 .nav__logo:focus {
-  border-color: var(--states-focused);
+  outline-color: var(--states-focused);
 }
 
 /* search */
@@ -426,8 +425,8 @@ button {
   width: 100%;
   font-size: 13px;
   font-weight: 500;
-  background: transparent;
   color: var(--bg-white);
+  background: transparent;
   line-height: 140%; /* 18.2px */
 }
 
@@ -443,9 +442,10 @@ button {
 
 /* notification */
 .notification {
-  gap: 20px;
+  gap: 8px;
   display: flex;
-  width: max-content;
+  align-items: flex-start;
+  justify-content: flex-end;
 }
 
 :is(.notification__bell, .notification__content):hover {
@@ -570,11 +570,11 @@ button {
 }
 
 .notification__alert--header--buttons > button {
-  border: 2px solid transparent;
+  outline: 2px solid transparent;
 }
 
 .notification__alert--header--buttons > button:focus {
-  border-color: var(--states-focused);
+  outline-color: var(--states-focused);
 }
 
 .notification__alert--main {
@@ -641,7 +641,7 @@ button {
   align-self: stretch;
   align-items: center;
   padding: 4px 12px 4px 8px;
-  border: 2px solid transparent;
+  outline: 2px solid transparent;
   grid-template-columns: 28px 1fr 16px;
 
   border-radius: 8px;
@@ -649,7 +649,7 @@ button {
 }
 
 .notification__menu--header--profile:focus {
-  border-color: var(--states-focused);
+  outline-color: var(--states-focused);
 }
 
 .notification__menu--header--profile--initials {
@@ -687,7 +687,7 @@ button {
   align-self: stretch;
   align-items: center;
   justify-content: flex-start;
-  border: 2px solid transparent;
+  outline: 2px solid transparent;
 }
 
 .notification__menu--header--stores svg {
@@ -714,7 +714,7 @@ button {
   font-size: 13px;
   font-weight: 400;
   color: var(--grey-g-200);
-  border: 2px solid transparent;
+  outline: 2px solid transparent;
   line-height: 140%; /* 18.2px */
   transition: background-color 300ms ease-in-out;
 }
@@ -724,7 +724,7 @@ button {
 }
 
 :is(.notification__menu--header--link, .notification__menu--header--stores):focus {
-  border-color: var(--states-focused);
+  outline-color: var(--states-focused);
 }
 
 :is(.notification__menu--header--link, .notification__menu--header--stores):hover {
@@ -752,6 +752,11 @@ button {
 }
 
 /* buttons */
+
+#select-a-plan-button {
+  width: 99px;
+  height: 28px;
+}
 
 /* button-1 */
 .button-1 {
@@ -891,7 +896,7 @@ nav {
 }
 
 main {
-  width: 55.56%;
+  max-width: 800px;
   margin-inline: auto;
 }
 
@@ -926,13 +931,17 @@ main {
 }
 
 .alert__close {
+  gap: 8px;
+  padding: 6px;
+  display: flex;
   cursor: pointer;
-  background: transparent;
-  border: 2px solid transparent;
+  border-radius: 6px;
+  align-items: flex-start;
+  outline: 2px solid transparent;
 }
 
 .alert__close:focus {
-  border-color: var(--states-focused);
+  outline-color: var(--states-focused);
 }
 
 /* todo-list */
@@ -943,11 +952,11 @@ main {
   line-height: 140%;
   width: max-content;
   color: var(--states-focused);
-  border: 2px solid transparent;
+  outline: 2px solid transparent;
 }
 
 .learn-more:focus {
-  border-color: var(--states-focused);
+  outline-color: var(--states-focused);
 }
 
 .todo-list {
@@ -975,19 +984,29 @@ main {
 }
 
 .todo-list__header--content {
-  gap: 16px;
+  gap: 4px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
 #todo-list__header--arrow {
+  gap: 8px;
+  width: 28px;
+  height: 28px;
+  padding: 4px;
   cursor: pointer;
-  border: 2px solid transparent;
+  border-radius: 6px;
+  outline: 2px solid transparent;
+}
+
+#todo-list__header--arrow img {
+  width: 20px;
+  height: 20px;
 }
 
 #todo-list__header--arrow:focus {
-  border-color: var(--states-focused);
+  outline-color: var(--states-focused);
 }
 
 #todo-list__header--arrow > img {
@@ -1011,6 +1030,7 @@ main {
 .todo-list__header--task-completion {
   gap: 8px;
   display: flex;
+  margin-top: 12px;
   align-items: center;
   justify-content: start;
 
@@ -1032,9 +1052,8 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
+  border-radius: 28px;
   background-color: #1a1a1a;
-  border-top-left-radius: 28px;
-  border-bottom-left-radius: 28px;
 }
 
 .todo-list__sections {
@@ -1173,12 +1192,12 @@ progress::-webkit-progress-value {
   font-size: 13px;
   font-weight: 600;
   color: var(--grey-g-200);
-  border: 2px solid transparent;
+  outline: 2px solid transparent;
   line-height: 140%; /* 18.2px */
 }
 
 .todo-list__section--heading:focus {
-  border-color: var(--states-focused);
+  outline-color: var(--states-focused);
 }
 
 .todo-list__section--subheading {
@@ -1210,7 +1229,6 @@ progress::-webkit-progress-value {
   height: 100dvh;
   position: fixed;
   visibility: hidden;
-  background: rgba(0, 0, 0, 0.2);
   transition: var(--default-transition);
 }
 
@@ -1264,11 +1282,6 @@ progress::-webkit-progress-value {
     max-width: 250px;
   }
 
-  .notification {
-    gap: 8px;
-    align-items: flex-start;
-  }
-
   .notification__bell {
     display: flex;
     background: none;
@@ -1284,10 +1297,6 @@ progress::-webkit-progress-value {
 
   .notification__content--username {
     display: none;
-  }
-
-  main {
-    width: 100%;
   }
 
   .alert {
@@ -1320,12 +1329,7 @@ progress::-webkit-progress-value {
   }
 
   .todo-list__header--content {
-    gap: 4px;
     align-self: stretch;
-  }
-
-  .todo-list__header--task-completion {
-    margin-top: 12px;
   }
 
   .learn-more {
