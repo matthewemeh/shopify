@@ -99,13 +99,31 @@ const updateProgress = () => {
   );
 };
 
+const moveToNextIncompleteTask = indicators => {
+  for (let i = 0; i < indicators.length; i++) {
+    if (!indicators[i].classList.contains(CHECKED_CLASS)) {
+      openSetupTask(i);
+      break;
+    }
+  }
+};
+
 const onUncheck = taskIndex => {
   const indicators = document.querySelectorAll('.todo-list__section--indicators');
   const currentIndicator = indicators[taskIndex];
 
   currentIndicator.classList.remove(CHECKED_CLASS);
+  currentIndicator.classList.add(LOADING_CLASS);
 
-  updateProgress();
+  // ...then uncheck the checkbox after a few seconds
+  setTimeout(() => {
+    currentIndicator.classList.remove(LOADING_CLASS);
+
+    const setupTasks = document.querySelectorAll('.todo-list__section');
+    closeAllTasks(setupTasks);
+    updateProgress();
+    moveToNextIncompleteTask(indicators);
+  }, 1500);
 };
 
 const onCheck = taskIndex => {
@@ -122,16 +140,8 @@ const onCheck = taskIndex => {
 
     const setupTasks = document.querySelectorAll('.todo-list__section');
     closeAllTasks(setupTasks);
-
     updateProgress();
-
-    // ...then move to next incomplete task
-    for (let i = 0; i < indicators.length; i++) {
-      if (!indicators[i].classList.contains(CHECKED_CLASS)) {
-        openSetupTask(i);
-        break;
-      }
-    }
+    moveToNextIncompleteTask(indicators);
   }, 1500);
 };
 
