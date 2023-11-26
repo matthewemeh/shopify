@@ -1092,11 +1092,22 @@ progress::-webkit-progress-value {
   width: 24px;
   height: 24px;
   position: relative;
-  border: 2px solid transparent;
+  border-radius: 3px;
+  transition: all 100ms ease-in;
 }
 
 .todo-list__section--indicators:focus {
-  border-color: var(--states-focused);
+  outline: 2px solid var(--states-focused);
+  outline-offset: 4px;
+}
+
+.todo-list__section--indicators:focus .todo-list__section--content--checkmark circle {
+  fill: #d9d9d9;
+  stroke-dasharray: 0 0;
+}
+
+.todo-list__section--indicators:hover .todo-list__section--content--checkmark circle {
+  stroke-dasharray: 0 0;
 }
 
 .todo-list__section--content--tick,
