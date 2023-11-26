@@ -584,6 +584,7 @@ button {
 
 .notification__alert--main {
   gap: 8px;
+  width: 100%;
   display: flex;
   padding: 16px;
   align-items: center;
