@@ -1003,11 +1003,16 @@ main {
   cursor: pointer;
   border-radius: 6px;
   outline: 2px solid transparent;
+  transition: background-color 200ms linear;
 }
 
 #todo-list__header--arrow img {
   width: 20px;
   height: 20px;
+}
+
+#todo-list__header--arrow:is(:hover, :active) {
+  background: var(--states-hover);
 }
 
 #todo-list__header--arrow:focus {
@@ -1117,7 +1122,6 @@ progress::-webkit-progress-value {
   height: 24px;
   position: relative;
   border-radius: 3px;
-  transition: all 100ms ease-in;
 }
 
 .todo-list__section--indicators:focus {
@@ -1161,10 +1165,6 @@ progress::-webkit-progress-value {
   visibility: hidden;
 }
 
-.todo-list__section--indicators.checked + .todo-list__section--content--text {
-  padding: 2px 0;
-}
-
 .todo-list__section--indicators.checked .todo-list__section--content--tick {
   opacity: 1;
   cursor: pointer;
@@ -1189,6 +1189,7 @@ progress::-webkit-progress-value {
   gap: 16px;
   flex: 1 0 0;
   display: flex;
+  padding: 2px 0;
   flex-direction: column;
   align-items: flex-start;
 }
