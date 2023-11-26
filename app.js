@@ -1,6 +1,12 @@
+const HIDDEN_CLASS = 'hidden';
+const ACTIVE_CLASS = 'active';
+const LOADING_CLASS = 'loading';
+const CHECKED_CLASS = 'checked';
+const INACTIVE_CLASS = 'inactive';
+
 const closeAlert = () => {
   const alert = document.querySelector('.alert');
-  alert.classList.add('hidden');
+  alert.classList.add(HIDDEN_CLASS);
 };
 
 const openSetupTasks = () => {
@@ -14,12 +20,12 @@ const openSetupTasks = () => {
 
   if (isSetupTasksExpanded) {
     setupTasksContainer.style.maxHeight = '140px';
-    todoListSection.classList.add('hidden');
+    todoListSection.classList.add(HIDDEN_CLASS);
 
     arrowButton.setAttribute('aria-expanded', 'false');
     arrowButton.setAttribute('aria-label', 'open setup tasks');
   } else {
-    todoListSection.classList.remove('hidden');
+    todoListSection.classList.remove(HIDDEN_CLASS);
     setupTasksContainer.style.maxHeight = '2000px';
 
     arrowButton.setAttribute('aria-expanded', 'true');
@@ -33,9 +39,9 @@ const openSetupTasks = () => {
 
 const closeAllTasks = setupTasks => {
   setupTasks.forEach((setupTask, index) => {
-    if (setupTask.classList.contains('active')) {
-      setupTask.classList.add('inactive');
-      setupTask.classList.remove('active');
+    if (setupTask.classList.contains(ACTIVE_CLASS)) {
+      setupTask.classList.add(INACTIVE_CLASS);
+      setupTask.classList.remove(ACTIVE_CLASS);
     }
 
     // ...then update aria expanded
@@ -51,8 +57,8 @@ const openSetupTask = taskIndex => {
   closeAllTasks(setupTasks);
 
   // open clicked task...
-  clickedTask.classList.add('active');
-  clickedTask.classList.remove('inactive');
+  clickedTask.classList.add(ACTIVE_CLASS);
+  clickedTask.classList.remove(INACTIVE_CLASS);
 
   // ...then update aria expanded
   const currentButton = document.querySelectorAll('.todo-list__section--heading')[taskIndex];
@@ -65,7 +71,7 @@ const getCompletedTasks = () => {
 
   for (let i = 0; i < indicators.length; i++) {
     const currentIndicator = indicators[i];
-    if (currentIndicator.classList.contains('checked')) {
+    if (currentIndicator.classList.contains(CHECKED_CLASS)) {
       completedTasks += 1;
     }
   }
@@ -97,7 +103,7 @@ const onUncheck = taskIndex => {
   const indicators = document.querySelectorAll('.todo-list__section--indicators');
   const currentIndicator = indicators[taskIndex];
 
-  currentIndicator.classList.remove('checked');
+  currentIndicator.classList.remove(CHECKED_CLASS);
 
   updateProgress();
 };
@@ -107,12 +113,12 @@ const onCheck = taskIndex => {
   const currentIndicator = indicators[taskIndex];
 
   // initiate loading animation...
-  currentIndicator.classList.add('loading');
+  currentIndicator.classList.add(LOADING_CLASS);
 
   // ...then check the checkbox after a few seconds
   setTimeout(() => {
-    currentIndicator.classList.remove('loading');
-    currentIndicator.classList.add('checked');
+    currentIndicator.classList.remove(LOADING_CLASS);
+    currentIndicator.classList.add(CHECKED_CLASS);
 
     const setupTasks = document.querySelectorAll('.todo-list__section');
     closeAllTasks(setupTasks);
@@ -121,7 +127,7 @@ const onCheck = taskIndex => {
 
     // ...then move to next incomplete task
     for (let i = 0; i < indicators.length; i++) {
-      if (!indicators[i].classList.contains('checked')) {
+      if (!indicators[i].classList.contains(CHECKED_CLASS)) {
         openSetupTask(i);
         break;
       }
@@ -134,7 +140,7 @@ const closeAllPopups = (exceptClass = '') => {
 
   popups.forEach(popup => {
     if (!popup.classList.contains(exceptClass)) {
-      popup.classList.remove('active');
+      popup.classList.remove(ACTIVE_CLASS);
     }
   });
 
@@ -143,12 +149,12 @@ const closeAllPopups = (exceptClass = '') => {
 
 const showOverlay = () => {
   const overlay = document.querySelector('.overlay');
-  overlay?.classList?.add('active');
+  overlay?.classList?.add(ACTIVE_CLASS);
 };
 
 const hideOverlay = () => {
   const overlay = document.querySelector('.overlay');
-  overlay?.classList?.remove('active');
+  overlay?.classList?.remove(ACTIVE_CLASS);
 };
 
 const toggleOverlay = () => {
@@ -156,7 +162,7 @@ const toggleOverlay = () => {
   const popups = document.querySelectorAll('.popup');
 
   for (let i = 0; i < popups.length; i++) {
-    if (popups[i].classList.contains('active')) {
+    if (popups[i].classList.contains(ACTIVE_CLASS)) {
       showOverlay();
       return;
     }
@@ -175,7 +181,7 @@ const toggleAriaExpanded = element => {
 
 const toggleNotificationAlerts = event => {
   const alertDiv = document.querySelector('.notification__alert');
-  alertDiv.classList.toggle('active');
+  alertDiv.classList.toggle(ACTIVE_CLASS);
 
   const notificationBell = event.currentTarget;
   toggleAriaExpanded(notificationBell);
@@ -186,7 +192,7 @@ const toggleNotificationAlerts = event => {
 
 const toggleNotificationMenu = event => {
   const menu = document.querySelector('.notification__menu');
-  menu.classList.toggle('active');
+  menu.classList.toggle(ACTIVE_CLASS);
 
   const profileButton = event.currentTarget;
   toggleAriaExpanded(profileButton);

@@ -1151,7 +1151,7 @@ progress::-webkit-progress-value {
 .todo-list__section--indicators.loading .todo-list__section--content--spinner {
   opacity: 1;
   visibility: visible;
-  animation: spin 400ms ease-in-out infinite;
+  animation: spin 1s linear infinite;
 }
 
 .todo-list__section--indicators.loading .todo-list__section--content--checkmark,
