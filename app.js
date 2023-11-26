@@ -108,7 +108,7 @@ const moveToNextIncompleteTask = indicators => {
   }
 };
 
-const onUncheck = (taskIndex, taskName = 'checkbox item') => {
+const uncheck = (taskIndex, taskName) => {
   const indicators = document.querySelectorAll('.todo-list__section--indicators');
   const currentIndicator = indicators[taskIndex];
 
@@ -134,7 +134,7 @@ const onUncheck = (taskIndex, taskName = 'checkbox item') => {
   }, 1500);
 };
 
-const onCheck = (taskIndex, taskName = 'checkbox item') => {
+const check = (taskIndex, taskName) => {
   const indicators = document.querySelectorAll('.todo-list__section--indicators');
   const currentIndicator = indicators[taskIndex];
 
@@ -159,6 +159,17 @@ const onCheck = (taskIndex, taskName = 'checkbox item') => {
     currentIndicatorStatus.ariaLabel = `Successfully marked ${taskName} as done`;
     currentIndicator.ariaLabel = currentIndicator.ariaLabel.replace('as done', 'as not done');
   }, 1500);
+};
+
+const toggleCheck = (taskIndex, taskName = 'checkbox item') => {
+  const indicators = document.querySelectorAll('.todo-list__section--indicators');
+  const currentIndicator = indicators[taskIndex];
+
+  if (currentIndicator.classList.contains(CHECKED_CLASS)) {
+    uncheck(taskIndex, taskName);
+  } else {
+    check(taskIndex, taskName);
+  }
 };
 
 const closeAllPopups = (exceptClass = '') => {
