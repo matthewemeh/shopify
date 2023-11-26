@@ -461,6 +461,11 @@ button {
   box-shadow: 0 0 0 1px #000, 0 0 0 3px var(--states-focused);
 }
 
+#mark-alerts,
+#filter-alerts {
+  border-radius: 4px;
+}
+
 .notification__bell {
   gap: 8px;
   padding: 6px;
@@ -1117,7 +1122,7 @@ progress::-webkit-progress-value {
 
 .todo-list__section--indicators:focus {
   outline: 2px solid var(--states-focused);
-  outline-offset: 4px;
+  outline-offset: 3px;
 }
 
 .todo-list__section--indicators:focus .todo-list__section--content--checkmark circle {
