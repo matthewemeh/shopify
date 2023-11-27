@@ -220,7 +220,7 @@ const toggleNotificationAlerts = event => {
   const alertDiv = document.querySelector('.notification__alert');
   alertDiv.classList.toggle(ACTIVE_CLASS);
 
-  const notificationBell = event.currentTarget;
+  const notificationBell = event.currentTarget || event;
   toggleAriaExpanded(notificationBell);
 
   closeAllPopups('notification__alert');
@@ -231,7 +231,7 @@ const toggleNotificationMenu = event => {
   const menu = document.querySelector('.notification__menu');
   menu.classList.toggle(ACTIVE_CLASS);
 
-  const profileButton = event.currentTarget;
+  const profileButton = event.currentTarget || event;
   toggleAriaExpanded(profileButton);
 
   closeAllPopups('notification__menu');
@@ -253,8 +253,7 @@ const highlightItem = itemID => {
 };
 
 window.onload = () => {
-  const menuItemIdentifier = `#notification-menu [role=menuitem]`;
-  const notificationMenuItems = document.querySelectorAll(menuItemIdentifier);
+  const notificationMenuItems = document.querySelectorAll('#notification-menu [role=menuitem]');
 
   notificationMenuItems.forEach((menuItem, index) => {
     menuItem.addEventListener(
@@ -279,9 +278,28 @@ window.onload = () => {
             const lastIndex = notificationMenuItems.length - 1;
             notificationMenuItems[lastIndex].focus();
           }
+        } else if (name === 'Escape') {
+          const notificationBell = document.querySelector('.notification__content');
+          notificationBell.focus();
+          toggleNotificationMenu(notificationBell);
         }
       },
       false
     );
+  });
+
+  const notificationAlertButtons = document.querySelectorAll(
+    '.notification__alert--header--buttons > button'
+  );
+  notificationAlertButtons.forEach(button => {
+    button.addEventListener('keydown', event => {
+      const name = event.key;
+
+      if (name === 'Escape') {
+        const profileButton = document.querySelector('.notification__bell');
+        profileButton.focus();
+        toggleNotificationAlerts(profileButton);
+      }
+    });
   });
 };

@@ -398,7 +398,7 @@ button {
   outline: 2px solid transparent;
 }
 
-.nav__logo:focus {
+.nav__logo:focus-visible {
   outline-color: var(--states-focused);
 }
 
@@ -435,8 +435,8 @@ button {
   border: 1px solid var(--stroke-s-100);
 }
 
-.nav__search:is(:active, :focus),
-.nav__search:has(input:is(:active, :focus)) {
+.nav__search:is(:active, :focus-visible),
+.nav__search:has(input:is(:active, :focus-visible)) {
   border: 2px solid var(--bg-white);
 }
 
@@ -729,7 +729,7 @@ button {
   background: var(--states-pressed);
 }
 
-:is(.notification__menu--header--link, .notification__menu--header--stores):focus {
+:is(.notification__menu--header--link, .notification__menu--header--stores):focus-visible {
   outline-color: var(--states-focused);
 }
 
@@ -797,7 +797,7 @@ button {
   box-shadow: 0 0 0 1.5px #333, 0 3px 0 0 #000 inset;
 }
 
-.button-1:focus {
+.button-1:focus-visible {
   background: #404040;
   box-shadow: 0 0 0 1.5px #333, 0 0 0 3px #fff, 0 0 0 5px var(--states-focused);
 }
@@ -832,7 +832,7 @@ button {
   box-shadow: 0 2px 1.5px 0 #e2e2e2 inset;
 }
 
-.button-2:focus {
+.button-2:focus-visible {
   background: var(--bg-white);
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 0 1px #fff, 0 0 0 3px var(--states-focused), 0 -1px 0 0 #b5b5b5 inset;
@@ -864,7 +864,7 @@ button {
   background: #e0e0e0;
 }
 
-.button-3:focus {
+.button-3:focus-visible {
   background: #fff;
   border-color: var(--states-focused);
 }
@@ -946,7 +946,7 @@ main {
   outline: 2px solid transparent;
 }
 
-.alert__close:focus {
+.alert__close:focus-visible {
   outline-color: var(--states-focused);
 }
 
@@ -961,7 +961,7 @@ main {
   outline: 2px solid transparent;
 }
 
-.learn-more:focus {
+.learn-more:focus-visible {
   outline-color: var(--states-focused);
 }
 
@@ -1016,7 +1016,7 @@ main {
   background: var(--states-hover);
 }
 
-#todo-list__header--arrow:focus {
+#todo-list__header--arrow:focus-visible {
   outline-color: var(--states-focused);
 }
 
@@ -1125,12 +1125,12 @@ progress::-webkit-progress-value {
   border-radius: 3px;
 }
 
-.todo-list__section--indicators:focus {
+.todo-list__section--indicators:focus-visible {
   outline: 2px solid var(--states-focused);
   outline-offset: 3px;
 }
 
-.todo-list__section--indicators:focus .todo-list__section--content--checkmark circle {
+.todo-list__section--indicators:focus-visible .todo-list__section--content--checkmark circle {
   fill: #d9d9d9;
   stroke-dasharray: 0 0;
 }
@@ -1203,7 +1203,7 @@ progress::-webkit-progress-value {
   line-height: 140%; /* 18.2px */
 }
 
-.todo-list__section--heading:focus {
+.todo-list__section--heading:focus-visible {
   outline-color: var(--states-focused);
 }
 
